@@ -21,7 +21,7 @@ library Math {
     /// @param x x
     /// @return e**x
     function exp(int x)
-        public
+        internal
         pure
         returns (uint)
     {
@@ -106,7 +106,7 @@ library Math {
     /// @param x x
     /// @return ln(x)
     function ln(uint x)
-        public
+        internal
         pure
         returns (int)
     {
@@ -156,7 +156,7 @@ library Math {
     /// @param x x
     /// @return logarithmic value
     function floorLog2(uint x)
-        public
+        internal
         pure
         returns (int lo)
     {
@@ -177,7 +177,7 @@ library Math {
     /// @param nums Numbers to look through
     /// @return Maximum number
     function max(int[] nums)
-        public
+        internal
         pure
         returns (int maxNum)
     {
@@ -193,7 +193,7 @@ library Math {
     /// @param b Second addend
     /// @return Did no overflow occur?
     function safeToAdd(uint a, uint b)
-        public
+        internal
         pure
         returns (bool)
     {
@@ -205,7 +205,7 @@ library Math {
     /// @param b Subtrahend
     /// @return Did no underflow occur?
     function safeToSub(uint a, uint b)
-        public
+        internal
         pure
         returns (bool)
     {
@@ -217,7 +217,7 @@ library Math {
     /// @param b Second factor
     /// @return Did no overflow occur?
     function safeToMul(uint a, uint b)
-        public
+        internal
         pure
         returns (bool)
     {
@@ -229,7 +229,7 @@ library Math {
     /// @param b Second addend
     /// @return Sum
     function add(uint a, uint b)
-        public
+        internal
         pure
         returns (uint)
     {
@@ -242,7 +242,7 @@ library Math {
     /// @param b Subtrahend
     /// @return Difference
     function sub(uint a, uint b)
-        public
+        internal
         pure
         returns (uint)
     {
@@ -255,7 +255,7 @@ library Math {
     /// @param b Second factor
     /// @return Product
     function mul(uint a, uint b)
-        public
+        internal
         pure
         returns (uint)
     {
@@ -268,7 +268,7 @@ library Math {
     /// @param b Second addend
     /// @return Did no overflow occur?
     function safeToAdd(int a, int b)
-        public
+        internal
         pure
         returns (bool)
     {
@@ -280,7 +280,7 @@ library Math {
     /// @param b Subtrahend
     /// @return Did no underflow occur?
     function safeToSub(int a, int b)
-        public
+        internal
         pure
         returns (bool)
     {
@@ -292,7 +292,7 @@ library Math {
     /// @param b Second factor
     /// @return Did no overflow occur?
     function safeToMul(int a, int b)
-        public
+        internal
         pure
         returns (bool)
     {
@@ -304,7 +304,7 @@ library Math {
     /// @param b Second addend
     /// @return Sum
     function add(int a, int b)
-        public
+        internal
         pure
         returns (int)
     {
@@ -317,7 +317,7 @@ library Math {
     /// @param b Subtrahend
     /// @return Difference
     function sub(int a, int b)
-        public
+        internal
         pure
         returns (int)
     {
@@ -330,7 +330,7 @@ library Math {
     /// @param b Second factor
     /// @return Product
     function mul(int a, int b)
-        public
+        internal
         pure
         returns (int)
     {
@@ -339,7 +339,7 @@ library Math {
     }
 
     function min(uint a, uint b) 
-        public
+        internal
         pure
         returns (uint)
     {
@@ -351,7 +351,7 @@ library Math {
     }
 
     function atleastZero(int a)
-        public
+        internal
         pure
         returns (uint)
     {
