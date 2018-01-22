@@ -10,9 +10,9 @@ contract StandardToken is Token {
     /*
      *  Storage
      */
-    mapping (address => uint) public balances;
-    mapping (address => mapping (address => uint)) public  allowances;
-    uint public totalTokens;
+    mapping (address => uint) balances;
+    mapping (address => mapping (address => uint)) allowances;
+    uint totalTokens;
 
     /*
      *  Public functions
@@ -30,7 +30,7 @@ contract StandardToken is Token {
             return false;
         balances[msg.sender] -= value;
         balances[to] += value;
-        // Transfer(msg.sender, to, value);
+        Transfer(msg.sender, to, value);
         return true;
     }
 
@@ -50,7 +50,7 @@ contract StandardToken is Token {
         balances[from] -= value;
         allowances[from][msg.sender] -= value;
         balances[to] += value;
-        // Transfer(from, to, value);
+        Transfer(from, to, value);
         return true;
     }
 
@@ -63,7 +63,7 @@ contract StandardToken is Token {
         returns (bool)
     {
         allowances[msg.sender][spender] = value;
-        // Approval(msg.sender, spender, value);
+        Approval(msg.sender, spender, value);
         return true;
     }
 
@@ -73,7 +73,7 @@ contract StandardToken is Token {
     /// @return Remaining allowance for spender
     function allowance(address owner, address spender)
         public
-        constant
+        view
         returns (uint)
     {
         return allowances[owner][spender];
@@ -84,7 +84,7 @@ contract StandardToken is Token {
     /// @return Balance of owner
     function balanceOf(address owner)
         public
-        constant
+        view
         returns (uint)
     {
         return balances[owner];
@@ -94,7 +94,7 @@ contract StandardToken is Token {
     /// @return Total supply
     function totalSupply()
         public
-        constant
+        view
         returns (uint)
     {
         return totalTokens;
