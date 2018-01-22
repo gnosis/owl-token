@@ -1,27 +1,65 @@
 pragma solidity ^0.4.18;
 
+import "./Math.sol";
 import "./StandardToken.sol";
 
 contract TokenOWL is StandardToken {
+    using Math for *;
+
     string public constant name = "OWL Token";
     string public constant symbol = "OWL";
-    uint8 public constant decimals = 18;  // 18 is the most common number of decimal places
+    uint8 public constant decimals = 18;
 
-    //@dev: Constructor of the contract OWL, which distributes tokens
-    function TokenOWL(
-    )
+    event Minted(address indexed to, uint256 amount);
+    event Burnt(address indexed from, uint256 amount);
+
+    address public creator;
+    address public minter;
+
+    /// @dev Constructor of the contract OWL, which distributes tokens
+    function TokenOWL()
         public
     {
-        //Tokens credited for Airdrop
-        balances[msg.sender] = 100000000 ether;
+        creator = msg.sender;
     }
 
-    /// @dev To be called from the Prediction markets and DutchX contracts to burn OWL for paying fees.
-    /// Depending on the allowance, different amounts will acutally be burned
-    /// @param amount of OWL to be burned
-    function burnOWL(uint amount) public {
-        require(balances[msg.sender] >= amount);
+    /// @dev Set minter. Only the creator of this contract can call this.
+    /// @param newMinter The new address authorized to mint this token
+    function setMinter(address newMinter)
+        public
+    {
+        require(msg.sender == creator);
+        minter = newMinter;
+    }
+
+    /// @dev Mints OWL.
+    /// @param to Address to which the minted token will be given
+    /// @param amount Amount of OWL to be minted
+    function mintOWL(address to, uint amount)
+        public
+    {
+        require(
+            minter != 0 &&
+            msg.sender == minter &&
+            balances[to].safeToAdd(amount) &&
+            totalTokens.safeToAdd(amount)
+        );
+        balances[to] += amount;
+        totalTokens += amount;
+        Minted(to, amount);
+    }
+
+    /// @dev Burns OWL.
+    /// @param amount Amount of OWL to be burnt
+    function burnOWL(uint amount)
+        public
+    {
+        require(
+            balances[msg.sender] >= amount &&
+            totalTokens >= amount
+        );
         balances[msg.sender] -= amount;
         totalTokens -= amount;
+        Burnt(msg.sender, amount);
     }
 }
