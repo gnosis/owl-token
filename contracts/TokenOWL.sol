@@ -20,15 +20,8 @@ contract TokenOWL is StandardToken {
     /// Depending on the allowance, different amounts will acutally be burned
     /// @param amount of OWL to be burned
     function burnOWL(uint amount) public {
-        //require(balances[msg.sender] >= amount);
-        if (balances[msg.sender] >= amount) {
-            Log("not allowed to burn - R1");
-        }
+        require(balances[msg.sender] >= amount);
         balances[msg.sender] -= amount;
         totalTokens -= amount;
     }
-
-    event Log(
-        string l
-    );
 }
