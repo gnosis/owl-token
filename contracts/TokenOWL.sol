@@ -38,14 +38,9 @@ contract TokenOWL is StandardToken {
     function mintOWL(address to, uint amount)
         public
     {
-        require(
-            minter != 0 &&
-            msg.sender == minter &&
-            balances[to].safeToAdd(amount) &&
-            totalTokens.safeToAdd(amount)
-        );
-        balances[to] += amount;
-        totalTokens += amount;
+        require(minter != 0 && msg.sender == minter);
+        balances[to] = balances[to].add(amount);
+        totalTokens = totalTokens.add(amount);
         Minted(to, amount);
     }
 
@@ -54,12 +49,8 @@ contract TokenOWL is StandardToken {
     function burnOWL(uint amount)
         public
     {
-        require(
-            balances[msg.sender] >= amount &&
-            totalTokens >= amount
-        );
-        balances[msg.sender] -= amount;
-        totalTokens -= amount;
+        balances[msg.sender] = balances[msg.sender].sub(amount);
+        totalTokens = totalTokens.sub(amount);
         Burnt(msg.sender, amount);
     }
 }

@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/gnosis/owl-token#readme",
   "devDependencies": {
+    "@digix/tempo": "^0.2.0",
     "truffle": "^4.0.5"
   }
 }
