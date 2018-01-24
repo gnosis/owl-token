@@ -38,6 +38,7 @@ contract('OWLAirdrop', (accounts) => {
     const initialGNOBalance = await fakeGNO.balanceOf.call(holder)
     await owlAirdrop.lockGNO(5e17, { from: holder })
     assert.equal((await fakeGNO.balanceOf.call(holder)).valueOf(), initialGNOBalance.sub(5e17).valueOf())
+    assert.equal((await owlAirdrop.lockedGNO.call(holder)).valueOf(), 5e17)
     assert.equal((await tokenOWL.balanceOf.call(holder)).valueOf(), 5e18)
   })
 
@@ -46,6 +47,7 @@ contract('OWLAirdrop', (accounts) => {
     const initialGNOBalance = await fakeGNO.balanceOf.call(holder)
     await owlAirdrop.lockGNO(1.5e18, { from: holder })
     assert.equal((await fakeGNO.balanceOf.call(holder)).valueOf(), initialGNOBalance.sub(1.5e18).valueOf())
+    assert.equal((await owlAirdrop.lockedGNO.call(holder)).valueOf(), 2e18)
     assert.equal((await tokenOWL.balanceOf.call(holder)).valueOf(), 2e19)
   })
 
