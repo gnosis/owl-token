@@ -1,8 +1,10 @@
 const { wait } = require('@digix/tempo')(web3)
 const { assertRejects } = require('./utils.js')
+const MathLib = artifacts.require('Math')
 const TokenOWL = artifacts.require('TokenOWL')
 const FakeToken = artifacts.require('FakeToken')
 const OWLAirdrop = artifacts.require('OWLAirdrop')
+OWLAirdrop.link(MathLib)
 
 contract('OWLAirdrop', (accounts) => {
   const [creator, holder] = accounts
