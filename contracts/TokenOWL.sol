@@ -15,6 +15,7 @@ contract TokenOWL is StandardToken {
 
     address public creator;
     address public minter;
+    uint public totalBurnt;
 
     /// @dev Constructor of the contract OWL, which distributes tokens
     function TokenOWL()
@@ -51,6 +52,16 @@ contract TokenOWL is StandardToken {
     {
         balances[msg.sender] = balances[msg.sender].sub(amount);
         totalTokens = totalTokens.sub(amount);
+        totalBurnt = totalBurnt.add(amount);
         Burnt(msg.sender, amount);
+    }
+
+    /// @dev Total ever minted.
+    function totalMinted()
+        public
+        view
+        returns (uint)
+    {
+        return totalTokens.add(totalBurnt);
     }
 }
