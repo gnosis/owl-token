@@ -29,9 +29,13 @@ contract('TokenOWL', (accounts) => {
     it('allows only the minter to mint', async () => {
       assert.equal((await tokenOWL.balanceOf.call(holder)).valueOf(), 0)
       assert.equal((await tokenOWL.totalSupply.call()).valueOf(), 0)
+      assert.equal((await tokenOWL.totalMinted.call()).valueOf(), 0)
+      assert.equal((await tokenOWL.totalBurnt.call()).valueOf(), 0)
       await tokenOWL.mintOWL(holder, 1e18, { from: minter })
       assert.equal((await tokenOWL.balanceOf.call(holder)).valueOf(), 1e18)
       assert.equal((await tokenOWL.totalSupply.call()).valueOf(), 1e18)
+      assert.equal((await tokenOWL.totalMinted.call()).valueOf(), 1e18)
+      assert.equal((await tokenOWL.totalBurnt.call()).valueOf(), 0)
 
       for(let other of [creator, altMinter, holder, notHolder]) {
         await assertRejects(tokenOWL.mintOWL(holder, 1e18, { from: other }))
@@ -46,9 +50,13 @@ contract('TokenOWL', (accounts) => {
 
       assert.equal((await tokenOWL.balanceOf.call(holder)).valueOf(), 1e18)
       assert.equal((await tokenOWL.totalSupply.call()).valueOf(), 1e18)
+      assert.equal((await tokenOWL.totalMinted.call()).valueOf(), 1e18)
+      assert.equal((await tokenOWL.totalBurnt.call()).valueOf(), 0)
       await tokenOWL.mintOWL(holder, 1e18, { from: altMinter })
       assert.equal((await tokenOWL.balanceOf.call(holder)).valueOf(), 2e18)
       assert.equal((await tokenOWL.totalSupply.call()).valueOf(), 2e18)
+      assert.equal((await tokenOWL.totalMinted.call()).valueOf(), 2e18)
+      assert.equal((await tokenOWL.totalBurnt.call()).valueOf(), 0)
 
       await assertRejects(tokenOWL.mintOWL(holder, 1e18, { from: minter }))
     })
@@ -67,9 +75,13 @@ contract('TokenOWL', (accounts) => {
     it('check that OWLHolder can call the burn OWL and that this costs him the OWL', async () => {
       const balanceBefore = (await tokenOWL.balanceOf.call(holder)).toNumber()
       assert.equal((await tokenOWL.totalSupply.call()).valueOf(), 1e18)
+      assert.equal((await tokenOWL.totalMinted.call()).valueOf(), 1e18)
+      assert.equal((await tokenOWL.totalBurnt.call()).valueOf(), 0)
       await tokenOWL.burnOWL(10 ** 18, { from: holder })
       assert.equal(balanceBefore - 10 ** 18, (await tokenOWL.balanceOf.call(holder)).toNumber())
       assert.equal((await tokenOWL.totalSupply.call()).valueOf(), 0)
+      assert.equal((await tokenOWL.totalMinted.call()).valueOf(), 1e18)
+      assert.equal((await tokenOWL.totalBurnt.call()).valueOf(), 1e18)
     })
   })
 })
