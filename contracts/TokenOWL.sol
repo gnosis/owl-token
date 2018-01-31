@@ -104,5 +104,12 @@ contract TokenOWL is StandardToken {
         totalTokens = totalTokens.sub(amount);
         Burnt(msg.sender, amount);
     }
+    
+    function getMasterCopy()
+        public
+        returns(address)
+    {
+        return masterCopy;
+    }
 
 }

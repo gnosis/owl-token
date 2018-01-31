@@ -41,8 +41,8 @@ contract TokenOWLUpdate is StandardToken {
     function setupTokenOWL()
         public
     {
-        require(creator == address(0));
-        creator = msg.sender;
+        Log(msg.sender);
+        Log(creator);
     }
 
     /// @dev trickers the update process via the proxyMaster for a new address _masterCopy 

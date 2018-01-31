@@ -74,14 +74,17 @@ contract('TokenOWL - Proxy', (accounts) => {
     const ans = await tokenOWL.updateMasterCopy({ from: master })
     tokenOWL = TokenOWLUpdate.at(ProxyMaster.address)
 
+    // testing that old variables are still available
     const param2 = await tokenOWL.minter.call()
     assert.equal(param2, minter, 'other variables should not be updated')
 
     // testing that we are actually talking to the new contract
-    console.log("up to here it is working")
     const param1 = await tokenOWL.getMasterCopy.call()
     assert.equal(param1, tokenOWLNew.address, 'pointing address should be updated')
-    console.log("reverted")
 
+    // testing that logic changed actually:
+    // in TokenOWLUpdate setupTokenOWL should just run some events
+    await tokenOWL.setupTokenOWL();
+    assert.equal(0,1);
   })
 })
