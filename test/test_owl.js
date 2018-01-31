@@ -1,12 +1,15 @@
 const { assertRejects } = require('./utils.js')
 const TokenOWL = artifacts.require('TokenOWL')
+const ProxyMaster = artifacts.require('ProxyMaster')
+
 
 contract('TokenOWL', (accounts) => {
   const [creator, minter, altMinter, holder, notHolder] = accounts
   let tokenOWL
 
   before(async () => {
-    tokenOWL = await TokenOWL.deployed()
+    const ProxyMasterContract = await ProxyMaster.deployed()
+    tokenOWL = TokenOWL.at(ProxyMasterContract.address)
   })
 
   it('allows only the creator to set the minter', async () => {

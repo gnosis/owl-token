@@ -3,13 +3,12 @@ pragma solidity ^0.4.18;
 import "@gnosis.pm/gnosis-core-contracts/contracts/Utils/Math.sol";
 import "@gnosis.pm/gnosis-core-contracts/contracts/Tokens/StandardToken.sol";
 
-contract TokenOWL is StandardToken {
+contract TokenOWLUpdate is StandardToken {
     using Math for *;
 
     string public constant name = "OWL Token";
     string public constant symbol = "OWL";
     uint8 public constant decimals = 18;
-
 
     address masterCopy;
 
@@ -103,6 +102,13 @@ contract TokenOWL is StandardToken {
         balances[msg.sender] = balances[msg.sender].sub(amount);
         totalTokens = totalTokens.sub(amount);
         Burnt(msg.sender, amount);
+    }
+
+    function getMasterCopy()
+        public
+        returns(address)
+    {
+        return masterCopy;
     }
 
 }
