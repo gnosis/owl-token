@@ -82,6 +82,8 @@ contract('TokenOWL - Proxy', (accounts) => {
     const param1 = await tokenOWL.getMasterCopy.call()
     assert.equal(param1, tokenOWLNew.address, 'pointing address should be updated')
 
+    const tO = await TokenOWL.deployed()
+    console.log(await tO.getMasterCopy.call())
     // testing that logic changed actually:
     // in TokenOWLUpdate setupTokenOWL should just run some events
     await tokenOWL.setupTokenOWL();

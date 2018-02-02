@@ -1,10 +1,11 @@
 pragma solidity ^0.4.18;
 
+import "@gnosis.pm/gnosis-core-contracts/contracts/Utils/Math.sol";
+import "@gnosis.pm/gnosis-core-contracts/contracts/Tokens/StandardToken.sol";
 
 /// @title Proxy - Generic proxy contract allows to execute all transactions applying the code of a master contract.
 /// @author Stefan George - <stefan@gnosis.pm>
 contract ProxyMaster {
-
     address masterCopy;
 
     /// @dev Constructor function sets address of master copy contract.

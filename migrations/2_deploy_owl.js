@@ -4,7 +4,7 @@ const ProxyMaster = artifacts.require('ProxyMaster')
 
 module.exports = function(deployer) {
   deployer.deploy(MathLib)
-	.then(() => deployer.link(MathLib, TokenOWL))
+	.then(() => deployer.link(MathLib, [TokenOWL, ProxyMaster]))
   	.then(() => deployer.deploy(TokenOWL))
   	.then(() => deployer.deploy(ProxyMaster, TokenOWL.address))
   	.then(() => ProxyMaster.deployed())
