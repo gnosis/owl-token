@@ -38,38 +38,38 @@ contract('TokenOWL - Proxy', (accounts) => {
   })
 
   it('masterCopy can\'t be updated before masterCopyCountdown was started', async () => {
-    assertIsCreator(master)
+    await assertIsCreator(master)
     await assertRejects(tokenOWL.updateMasterCopy({ from: master }), 'should reject as startMasterCopyCountdown wasn\'t yet called')
    })
 
   it('not creator can\'t call startMasterCopyCountdown', async () => {
-    assertIsNotCreator(notMaster)
+    await assertIsNotCreator(notMaster)
     await assertRejects(tokenOWL.startMasterCopyCountdown(tokenOWLNew.address, { from: notMaster }), 'should reject as caller isn\'t the creator')
   })
 
   it('can\'t call startMasterCopyCountdown with zero address', async () => {
-    assertIsCreator(master)
+    await assertIsCreator(master)
     await assertRejects(tokenOWL.startMasterCopyCountdown(0, { from: master }), 'should reject as caller isn\'t the creator')
   })
 
   it('creator can call startMasterCopyCountdown', async () => {
-    assertIsCreator(master)
+    await assertIsCreator(master)
     await tokenOWL.startMasterCopyCountdown(tokenOWLNew.address, { from: master })
   })
 
   it('creator can\'t update masterCopy before time limit', async () => {
-    assertIsCreator(master)
+    await assertIsCreator(master)
     await assertRejects(tokenOWL.updateMasterCopy({ from: master }), 'should reject as time hasn\t passed')
   })
 
   it('not creator can\'t update masterCopy', async () => {
     await wait(60 * 60 * 24 * 30)
-    assertIsNotCreator(notMaster)
+    await assertIsNotCreator(notMaster)
     await assertRejects(tokenOWL.updateMasterCopy({ from: notMaster }), 'should reject as caller isn\'t the creator')
   })
 
   it('creator can update masterCopy after time limit', async () => {
-    assertIsCreator(master)
+    await assertIsCreator(master)
     await tokenOWL.setMinter(minter) 
     const ans = await tokenOWL.updateMasterCopy({ from: master })
     tokenOWL = TokenOWLUpdate.at(ProxyMaster.address)

@@ -2,15 +2,14 @@ pragma solidity ^0.4.18;
 
 import "@gnosis.pm/gnosis-core-contracts/contracts/Utils/Math.sol";
 import "@gnosis.pm/gnosis-core-contracts/contracts/Tokens/StandardToken.sol";
+import "./ProxyMaster.sol";
 
-contract TokenOWLUpdate is StandardToken {
+contract TokenOWLUpdate is ProxiedMaster, StandardToken {
     using Math for *;
 
     string public constant name = "OWL Token";
     string public constant symbol = "OWL";
     uint8 public constant decimals = 18;
-
-    address masterCopy;
 
     struct masterCopyCountdownType {
         address masterCopy;
