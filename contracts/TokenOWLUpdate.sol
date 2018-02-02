@@ -24,7 +24,6 @@ contract TokenOWLUpdate is ProxiedMaster, StandardToken {
 
     event Minted(address indexed to, uint256 amount);
     event Burnt(address indexed from, uint256 amount);
-    event Log(address a);
 
     modifier onlyCreator() {
         // R1
@@ -40,8 +39,8 @@ contract TokenOWLUpdate is ProxiedMaster, StandardToken {
     function setupTokenOWL()
         public
     {
-        Log(msg.sender);
-        Log(creator);
+        // just having a changed logic here
+        Minted(msg.sender, 10);
     }
 
     /// @dev trickers the update process via the proxyMaster for a new address _masterCopy 
@@ -69,7 +68,6 @@ contract TokenOWLUpdate is ProxiedMaster, StandardToken {
 
         // Update masterCopy
         masterCopy = masterCopyCountdown.masterCopy;
-        Log(masterCopy);
     }
 
     /// @dev Set minter. Only the creator of this contract can call this.
