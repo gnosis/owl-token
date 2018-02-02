@@ -2,10 +2,9 @@ pragma solidity ^0.4.18;
 
 import "@gnosis.pm/gnosis-core-contracts/contracts/Utils/Math.sol";
 import "@gnosis.pm/gnosis-core-contracts/contracts/Tokens/StandardToken.sol";
-import "./ProxyMaster.sol";
+import "../contracts/ProxyMaster.sol";
 
-
-contract TokenOWL is ProxiedMaster, StandardToken {
+contract TokenOWLUpdateFixture is ProxiedMaster, StandardToken {
     using Math for *;
 
     string public constant name = "OWL Token";
@@ -35,6 +34,15 @@ contract TokenOWL is ProxiedMaster, StandardToken {
         // }
         _;
     }
+
+    /// @dev Constructor of the contract OWL, which distributes tokens
+    function setupTokenOWL()
+        public
+    {
+        // just having a changed logic here
+        minter = address(0);
+    }
+
     /// @dev trickers the update process via the proxyMaster for a new address _masterCopy 
     /// updating is only possible after 30 days
     function startMasterCopyCountdown (
@@ -92,7 +100,7 @@ contract TokenOWL is ProxiedMaster, StandardToken {
         totalTokens = totalTokens.sub(amount);
         Burnt(msg.sender, amount);
     }
-    
+
     function getMasterCopy()
         public
         returns(address)

@@ -2,8 +2,11 @@ const { wait } = require('@digix/tempo')(web3)
 const { assertRejects } = require('./utils.js')
 const MathLib = artifacts.require('Math')
 const TokenOWL = artifacts.require('TokenOWL')
+const TokenOWLProxy = artifacts.require('TokenOWLProxy')
 const FakeToken = artifacts.require('FakeToken')
 const OWLAirdrop = artifacts.require('OWLAirdrop')
+const ProxyMaster = artifacts.require('ProxyMaster')
+
 OWLAirdrop.link(MathLib)
 
 contract('OWLAirdrop', (accounts) => {
@@ -13,7 +16,8 @@ contract('OWLAirdrop', (accounts) => {
 
   before(async () => {
     fakeGNO = await FakeToken.deployed()
-    tokenOWL = await TokenOWL.deployed()
+    const ProxyMasterContract = await TokenOWLProxy.deployed()
+    tokenOWL = TokenOWL.at(ProxyMasterContract.address)
     startTime = (await web3.eth.getBlock('pending')).timestamp
     endTime = startTime + duration
     await fakeGNO.transfer(holder, 2e18, { from: creator })
