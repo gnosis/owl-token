@@ -16,7 +16,6 @@ contract('TokenOWL - Proxy', (accounts) => {
   const [ master, notMaster, minter] = accounts
 
   before(async () => {
-    const MathLibDeployed = await MathLib.deployed()
     await TokenOWLUpdateFixture.link(MathLib)
     const ProxyMasterContract = await TokenOWLProxy.deployed()
     tokenOWL = TokenOWL.at(ProxyMasterContract.address)
