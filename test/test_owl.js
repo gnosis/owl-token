@@ -1,6 +1,8 @@
 const { assertRejects } = require('./utils.js')
 const TokenOWL = artifacts.require('TokenOWL')
 const ProxyMaster = artifacts.require('ProxyMaster')
+const TokenOWLProxy = artifacts.require('TokenOWLProxy')
+
 
 
 contract('TokenOWL', (accounts) => {
@@ -8,7 +10,7 @@ contract('TokenOWL', (accounts) => {
   let tokenOWL
 
   before(async () => {
-    const ProxyMasterContract = await ProxyMaster.deployed()
+    const ProxyMasterContract = await TokenOWLProxy.deployed()
     tokenOWL = TokenOWL.at(ProxyMasterContract.address)
   })
 

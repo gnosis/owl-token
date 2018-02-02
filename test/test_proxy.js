@@ -4,7 +4,8 @@ const { assertRejects } = require('./utils.js')
 const MathLib = artifacts.require('Math')
 const TokenOWL = artifacts.require('TokenOWL')
 const TokenOWLUpdateFixture = artifacts.require('TokenOWLUpdateFixture')
-const ProxyMaster = artifacts.require('ProxyMaster')
+const TokenOWLProxy = artifacts.require('TokenOWLProxy')
+
 // Test VARS
 let tokenOWL, tokenOWLNew
 let pr
@@ -17,7 +18,7 @@ contract('TokenOWL - Proxy', (accounts) => {
   before(async () => {
     const MathLibDeployed = await MathLib.deployed()
     await TokenOWLUpdateFixture.link(MathLib)
-    const ProxyMasterContract = await ProxyMaster.deployed()
+    const ProxyMasterContract = await TokenOWLProxy.deployed()
     tokenOWL = TokenOWL.at(ProxyMasterContract.address)
     // a new deployed TokenOWL to replace the old with
     tokenOWLNew = await TokenOWLUpdateFixture.new()
@@ -73,7 +74,7 @@ contract('TokenOWL - Proxy', (accounts) => {
     await assertIsCreator(master)
     await tokenOWL.setMinter(minter) 
     const ans = await tokenOWL.updateMasterCopy({ from: master })
-    tokenOWL = TokenOWLUpdateFixture.at(ProxyMaster.address)
+    tokenOWL = TokenOWLUpdateFixture.at(TokenOWLProxy.address)
 
     // testing that old variables are still available
     const param2 = await tokenOWL.minter.call()

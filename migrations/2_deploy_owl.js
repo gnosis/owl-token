@@ -1,12 +1,11 @@
 const MathLib = artifacts.require('Math')
 const TokenOWL = artifacts.require('TokenOWL')
+const TokenOWLProxy = artifacts.require('TokenOWLProxy')
 const ProxyMaster = artifacts.require('ProxyMaster')
 
 module.exports = function(deployer) {
   deployer.deploy(MathLib)
-	.then(() => deployer.link(MathLib, [TokenOWL, ProxyMaster]))
+	.then(() => deployer.link(MathLib, [TokenOWL, TokenOWLProxy, ProxyMaster]))
   	.then(() => deployer.deploy(TokenOWL))
-  	.then(() => deployer.deploy(ProxyMaster, TokenOWL.address))
-  	.then(() => ProxyMaster.deployed())
-  	.then((p) => TokenOWL.at(p.address).setupTokenOWL())
+  	.then(() => deployer.deploy(TokenOWLProxy, TokenOWL.address))
 }
