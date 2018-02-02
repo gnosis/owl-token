@@ -4,33 +4,6 @@ import "@gnosis.pm/gnosis-core-contracts/contracts/Utils/Math.sol";
 import "@gnosis.pm/gnosis-core-contracts/contracts/Tokens/StandardToken.sol";
 import "./ProxyMaster.sol";
 
-contract TokenOWLProxy is ProxyMaster, StandardToken {
-    using Math for *;
-
-    string public constant name = "OWL Token";
-    string public constant symbol = "OWL";
-    uint8 public constant decimals = 18;
-
-    struct masterCopyCountdownType {
-        address masterCopy;
-        uint timeWhenAvailable;
-    }
-
-    masterCopyCountdownType masterCopyCountdown;
-
-    address public creator;
-    address public minter;
-
-    /// @dev Constructor of the contract OWL, which distributes tokens
-    function TokenOWLProxy(address proxied)
-        ProxyMaster(proxied)
-        public
-    {
-        creator = msg.sender;
-    }
-}
-
-
 
 contract TokenOWL is ProxiedMaster, StandardToken {
     using Math for *;
@@ -62,15 +35,6 @@ contract TokenOWL is ProxiedMaster, StandardToken {
         // }
         _;
     }
-
-    /// @dev Constructor of the contract OWL, which distributes tokens
-    function setupTokenOWL()
-        public
-    {
-        require(creator == address(0));
-        creator = msg.sender;
-    }
-
     /// @dev trickers the update process via the proxyMaster for a new address _masterCopy 
     /// updating is only possible after 30 days
     function startMasterCopyCountdown (

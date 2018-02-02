@@ -40,7 +40,7 @@ contract TokenOWLUpdateFixture is ProxiedMaster, StandardToken {
         public
     {
         // just having a changed logic here
-        Minted(msg.sender, 10);
+        minter = address(0);
     }
 
     /// @dev trickers the update process via the proxyMaster for a new address _masterCopy 

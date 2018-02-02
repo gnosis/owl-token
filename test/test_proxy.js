@@ -88,5 +88,8 @@ contract('TokenOWL - Proxy', (accounts) => {
     // in TokenOWL, setupTokenOWL would throw
     // in TokenOWLUpdateFixture setupTokenOWL should just log a event
     await tokenOWL.setupTokenOWL();
+    const newMinter= await tokenOWL.minter.call()
+    //console.log("new minter"+newMinter)
+    assert.equal(newMinter, 0)
   })
 })
