@@ -85,8 +85,8 @@ contract('TokenOWL - Proxy', (accounts) => {
     assert.equal(param1, tokenOWLNew.address, 'pointing address should be updated')
 
     // testing that logic changed actually:
-    // in TokenOWL, setupTokenOWL would throw
-    // in TokenOWLUpdateFixture setupTokenOWL should just log a event
+    // in TokenOWL, setupTokenOWL is not existent
+    // in TokenOWLUpdateFixture setupTokenOWL should just set the minter ==0
     await tokenOWL.setupTokenOWL();
     const newMinter= await tokenOWL.minter.call()
     //console.log("new minter"+newMinter)
