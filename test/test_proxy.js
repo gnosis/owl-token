@@ -3,9 +3,8 @@ const { wait } = require('@digix/tempo')(web3)
 const { assertRejects } = require('./utils.js')
 const MathLib = artifacts.require('Math')
 const TokenOWL = artifacts.require('TokenOWL')
-const TokenOWLUpdate = artifacts.require('TokenOWLUpdate')
+const TokenOWLUpdateFixture = artifacts.require('TokenOWLUpdateFixture')
 const ProxyMaster = artifacts.require('ProxyMaster')
-
 // Test VARS
 let tokenOWL, tokenOWLNew
 let pr
@@ -16,10 +15,12 @@ contract('TokenOWL - Proxy', (accounts) => {
   const [ master, notMaster, minter] = accounts
 
   before(async () => {
+    const MathLibDeployed = await MathLib.deployed()
+    await TokenOWLUpdateFixture.link(MathLib)
     const ProxyMasterContract = await ProxyMaster.deployed()
     tokenOWL = TokenOWL.at(ProxyMasterContract.address)
     // a new deployed TokenOWL to replace the old with
-    tokenOWLNew = await TokenOWLUpdate.new()
+    tokenOWLNew = await TokenOWLUpdateFixture.new()
   })
 
   const assertIsCreator = async (acc) => {
@@ -72,7 +73,7 @@ contract('TokenOWL - Proxy', (accounts) => {
     await assertIsCreator(master)
     await tokenOWL.setMinter(minter) 
     const ans = await tokenOWL.updateMasterCopy({ from: master })
-    tokenOWL = TokenOWLUpdate.at(ProxyMaster.address)
+    tokenOWL = TokenOWLUpdateFixture.at(ProxyMaster.address)
 
     // testing that old variables are still available
     const param2 = await tokenOWL.minter.call()
@@ -84,7 +85,7 @@ contract('TokenOWL - Proxy', (accounts) => {
 
     // testing that logic changed actually:
     // in TokenOWL, setupTokenOWL would throw
-    // in TokenOWLUpdate setupTokenOWL should just log a event
+    // in TokenOWLUpdateFixture setupTokenOWL should just log a event
     await tokenOWL.setupTokenOWL();
   })
 })
