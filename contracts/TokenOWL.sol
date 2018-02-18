@@ -22,8 +22,6 @@ contract TokenOWL is ProxiedMaster, StandardToken {
     address public creator;
     address public minter;
 
-    mapping (address => mapping (address => uint)) public allowancesToBurn;
-
     event Minted(address indexed to, uint256 amount);
     event Burnt(address indexed from, address indexed user, uint256 amount);
 
@@ -59,6 +57,14 @@ contract TokenOWL is ProxiedMaster, StandardToken {
         masterCopy = masterCopyCountdown.masterCopy;
     }
 
+    function getMasterCopy()
+        public
+        view
+        returns (address)
+    {
+        return masterCopy;
+    }
+
     /// @dev Set minter. Only the creator of this contract can call this.
     /// @param newMinter The new address authorized to mint this token
     function setMinter(address newMinter)
@@ -80,29 +86,15 @@ contract TokenOWL is ProxiedMaster, StandardToken {
         Minted(to, amount);
     }
 
-    function approveToBurn(address burner, uint value)
-        public
-    {
-        allowancesToBurn[msg.sender][burner] = value;
-        ApprovalToBurn(msg.sender, burner, value);
-    }
-
     /// @dev Burns OWL.
+    /// @param address Address of OWL owner
     /// @param amount Amount of OWL to be burnt
     function burnOWL(address user, uint amount)
         public
     {
-        allowancesToBurn[user][msg.sender].sub(amount);
+        allowances[user][msg.sender].sub(amount);
         balances[user].sub(amount);
         totalTokens = totalTokens.sub(amount);
         Burnt(msg.sender, user, amount);
     }
-    
-    function getMasterCopy()
-        public
-        returns(address)
-    {
-        return masterCopy;
-    }
-
 }
