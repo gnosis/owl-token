@@ -22,17 +22,14 @@ contract TokenOWL is ProxiedMaster, StandardToken {
     address public creator;
     address public minter;
 
+    mapping (address => mapping (address => uint)) public allowancesToBurn;
 
     event Minted(address indexed to, uint256 amount);
-    event Burnt(address indexed from, uint256 amount);
+    event Burnt(address indexed from, address indexed user, uint256 amount);
 
     modifier onlyCreator() {
         // R1
         require(msg.sender == creator);
-        // if (msg.sender != auctioneer) {
-        //     Log('onlyAuctioneer R1');
-        //     return;
-        // }
         _;
     }
     /// @dev trickers the update process via the proxyMaster for a new address _masterCopy 
@@ -76,21 +73,35 @@ contract TokenOWL is ProxiedMaster, StandardToken {
     /// @param amount Amount of OWL to be minted
     function mintOWL(address to, uint amount)
         public
+        returns (bool)
     {
         require(minter != 0 && msg.sender == minter);
         balances[to] = balances[to].add(amount);
         totalTokens = totalTokens.add(amount);
         Minted(to, amount);
+        return true;
+    }
+
+    function approveToBurn(address burner, uint value)
+        public
+        returns (bool)
+    {
+        allowancesToBurn[msg.sender][burner] = value;
+        ApprovalToBurn(msg.sender, burner, value);
+        return true;
     }
 
     /// @dev Burns OWL.
     /// @param amount Amount of OWL to be burnt
-    function burnOWL(uint amount)
+    function burnOWL(address user, uint amount)
         public
+        returns (bool)
     {
-        balances[msg.sender] = balances[msg.sender].sub(amount);
+        allowancesToBurn[user][msg.sender].sub(amount);
+        balances[user].sub(amount);
         totalTokens = totalTokens.sub(amount);
-        Burnt(msg.sender, amount);
+        Burnt(msg.sender, user, amount);
+        return true;
     }
     
     function getMasterCopy()
