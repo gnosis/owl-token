@@ -73,35 +73,29 @@ contract TokenOWL is ProxiedMaster, StandardToken {
     /// @param amount Amount of OWL to be minted
     function mintOWL(address to, uint amount)
         public
-        returns (bool)
     {
         require(minter != 0 && msg.sender == minter);
         balances[to] = balances[to].add(amount);
         totalTokens = totalTokens.add(amount);
         Minted(to, amount);
-        return true;
     }
 
     function approveToBurn(address burner, uint value)
         public
-        returns (bool)
     {
         allowancesToBurn[msg.sender][burner] = value;
         ApprovalToBurn(msg.sender, burner, value);
-        return true;
     }
 
     /// @dev Burns OWL.
     /// @param amount Amount of OWL to be burnt
     function burnOWL(address user, uint amount)
         public
-        returns (bool)
     {
         allowancesToBurn[user][msg.sender].sub(amount);
         balances[user].sub(amount);
         totalTokens = totalTokens.sub(amount);
         Burnt(msg.sender, user, amount);
-        return true;
     }
     
     function getMasterCopy()
