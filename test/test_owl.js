@@ -6,7 +6,7 @@ const TokenOWLProxy = artifacts.require('TokenOWLProxy')
 
 
 contract('TokenOWL', (accounts) => {
-  const [creator, minter, altMinter, holder, notHolder] = accounts
+  const [creator, minter, altMinter, OWLHolder, notOWLHolder, notApprover, contractConsumingOWL] = accounts
   let tokenOWL
 
   before(async () => {
@@ -21,7 +21,7 @@ contract('TokenOWL', (accounts) => {
     await tokenOWL.setMinter(minter, { from: creator })
     assert.equal(await tokenOWL.minter.call(), minter)
 
-    for(let other of [minter, holder, notHolder]) {
+    for(let other of [minter, OWLHolder, notOWLHolder]) {
       await assertRejects(tokenOWL.setMinter(minter, { from: other }))
     }
   })
@@ -32,12 +32,12 @@ contract('TokenOWL', (accounts) => {
     })
 
     it('allows only the minter to mint', async () => {
-      assert.equal((await tokenOWL.balanceOf.call(holder)).valueOf(), 0)
-      await tokenOWL.mintOWL(holder, 1e18, { from: minter })
-      assert.equal((await tokenOWL.balanceOf.call(holder)).valueOf(), 1e18)
+      assert.equal((await tokenOWL.balanceOf.call(OWLHolder)).valueOf(), 0)
+      await tokenOWL.mintOWL(OWLHolder, 1e18, { from: minter })
+      assert.equal((await tokenOWL.balanceOf.call(OWLHolder)).valueOf(), 1e18)
 
-      for(let other of [creator, altMinter, holder, notHolder]) {
-        await assertRejects(tokenOWL.mintOWL(holder, 1e18, { from: other }))
+      for(let other of [creator, altMinter, OWLHolder, notOWLHolder]) {
+        await assertRejects(tokenOWL.mintOWL(OWLHolder, 1e18, { from: other }))
       }
     })
 
@@ -46,28 +46,46 @@ contract('TokenOWL', (accounts) => {
       await tokenOWL.setMinter(altMinter, { from: creator })
       assert.equal(await tokenOWL.minter.call(), altMinter)
 
-      assert.equal((await tokenOWL.balanceOf.call(holder)).valueOf(), 1e18)
-      await tokenOWL.mintOWL(holder, 1e18, { from: altMinter })
-      assert.equal((await tokenOWL.balanceOf.call(holder)).valueOf(), 2e18)
+      assert.equal((await tokenOWL.balanceOf.call(OWLHolder)).valueOf(), 1e18)
+      await tokenOWL.mintOWL(OWLHolder, 1e18, { from: altMinter })
+      assert.equal((await tokenOWL.balanceOf.call(OWLHolder)).valueOf(), 2e18)
 
-      await assertRejects(tokenOWL.mintOWL(holder, 1e18, { from: minter }))
+      await assertRejects(tokenOWL.mintOWL(OWLHolder, 1e18, { from: minter }))
     })
   })
 
   contract('burning', () => {
     before(async () => {
       await tokenOWL.setMinter(minter, { from: creator })
-      await tokenOWL.mintOWL(holder, 1e18, { from: minter })
+      await tokenOWL.mintOWL(OWLHolder, 1e18, { from: minter })
     })
 
-    it('check that NoOWLHolder can not call the burn function', async () => {
-      await assertRejects(tokenOWL.burnOWL(1, { from: notHolder }), 'Non-OWL holder able to burn OWL')
+    it('check that burning is not working, if allowance is not enough', async () => {
+      await tokenOWL.approve(contractConsumingOWL, 1e5,{ from: OWLHolder })
+      assert.equal((await tokenOWL.allowance(OWLHolder,contractConsumingOWL)).toNumber(),1e5)
+      assert.isAtLeast((await tokenOWL.balanceOf(OWLHolder)).toNumber(),1e10, 'OWLHolder has not enough funds')
+      await assertRejects(tokenOWL.burnOWL(OWLHolder, 1e10, { from: contractConsumingOWL }), ' able to burn OWL although allowance is not enough')
     })
 
-    it('check that OWLHolder can call the burn OWL and that this costs him the OWL', async () => {
-      const balanceBefore = (await tokenOWL.balanceOf.call(holder)).toNumber()
-      await tokenOWL.burnOWL(10 ** 18, { from: holder })
-      assert.equal(balanceBefore - 10 ** 18, (await tokenOWL.balanceOf.call(holder)).toNumber())
+    it('check that NotOWLHolder can not get OWL burnt', async () => {
+      await tokenOWL.approve(contractConsumingOWL, 1e18,{ from: notOWLHolder })
+
+      assert.equal(1e18,(await tokenOWL.allowance(notOWLHolder, contractConsumingOWL)).toNumber())
+      assert.isAtLeast((await tokenOWL.balanceOf(notOWLHolder)).toNumber(),0)
+
+      await assertRejects(tokenOWL.burnOWL(notOWLHolder,1, { from: contractConsumingOWL }), 'able to burn OWL although there are not enough OWL to burn')
+    })
+    
+    it('allows contract to burn OWL on behalf of OWLHolder if OWLHolder has set an allowance for contract', async () => {
+      const balanceBefore = (await tokenOWL.balanceOf.call(OWLHolder)).toNumber()
+
+      await tokenOWL.approve(contractConsumingOWL, 1e18,{ from: OWLHolder })
+      const allowanceBefore = (await tokenOWL.allowance.call(OWLHolder, contractConsumingOWL)).toNumber()
+
+      await tokenOWL.burnOWL(OWLHolder, 10 ** 18, { from: contractConsumingOWL})
+
+      assert.equal(balanceBefore - 10 ** 18, (await tokenOWL.balanceOf.call(OWLHolder)).toNumber(), 'balance not updated correctly')
+      assert.equal(allowanceBefore - 10 ** 18, (await tokenOWL.allowance.call(OWLHolder, contractConsumingOWL)).toNumber(), 'allowance was not changed correctly')
     })
   })
 })
