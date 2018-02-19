@@ -63,24 +63,29 @@ contract('TokenOWL', (accounts) => {
     it('check that burning is not working, if allowance is not enough', async () => {
       await tokenOWL.approve(contractConsumingOWL, 1e5,{ from: OWLHolder })
       assert.equal((await tokenOWL.allowance(OWLHolder,contractConsumingOWL)).toNumber(),1e5)
-      assert.isAtLeast((await tokenOWL.balanceOf(OWLHolder)).toNumber(),1e10)
-      //allowance is not high enough and hence it is supposed to fail      
-      await assertRejects(tokenOWL.burnOWL(OWLHolder, 1e10, { from: contractConsumingOWL }), 'Non-OWL OWLHolder able to burn OWL')
+      assert.isAtLeast((await tokenOWL.balanceOf(OWLHolder)).toNumber(),1e10, 'OWLHolder has not enough funds')
+      await assertRejects(tokenOWL.burnOWL(OWLHolder, 1e10, { from: contractConsumingOWL }), ' able to burn OWL although allowance is not enough')
     })
 
-    it('check that NotOWLHolder can not call the burn function', async () => {
+    it('check that NotOWLHolder can not get OWL burnt', async () => {
       await tokenOWL.approve(contractConsumingOWL, 1e18,{ from: notOWLHolder })
+
       assert.equal(1e18,(await tokenOWL.allowance(notOWLHolder, contractConsumingOWL)).toNumber())
       assert.isAtLeast((await tokenOWL.balanceOf(notOWLHolder)).toNumber(),0)
 
-      await assertRejects(tokenOWL.burnOWL(notOWLHolder,1, { from: contractConsumingOWL }), 'Non-OWL OWLHolder able to burn OWL')
+      await assertRejects(tokenOWL.burnOWL(notOWLHolder,1, { from: contractConsumingOWL }), 'able to burn OWL although there are not enough OWL to burn')
     })
 
     it('check that OWLOWLHolder can call the burn OWL and that this costs him the OWL', async () => {
       const balanceBefore = (await tokenOWL.balanceOf.call(OWLHolder)).toNumber()
+
       await tokenOWL.approve(contractConsumingOWL, 1e18,{ from: OWLHolder })
+      const allowanceBefore = (await tokenOWL.allowance.call(OWLHolder, contractConsumingOWL)).toNumber()
+
       await tokenOWL.burnOWL(OWLHolder, 10 ** 18, { from: contractConsumingOWL})
       assert.equal(balanceBefore - 10 ** 18, (await tokenOWL.balanceOf.call(OWLHolder)).toNumber())
+
+      assert.equal(allowanceBefore - 10 ** 18, (await tokenOWL.allowance.call(OWLHolder, contractConsumingOWL)).toNumber())
     })
   })
 })
