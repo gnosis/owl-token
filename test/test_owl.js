@@ -75,17 +75,17 @@ contract('TokenOWL', (accounts) => {
 
       await assertRejects(tokenOWL.burnOWL(notOWLHolder,1, { from: contractConsumingOWL }), 'able to burn OWL although there are not enough OWL to burn')
     })
-
-    it('check that OWLOWLHolder can call the burn OWL and that this costs him the OWL', async () => {
+    
+    it('allows contract to burn OWL on behalf of OWLHolder if OWLHolder has set an allowance for contract', async () => {
       const balanceBefore = (await tokenOWL.balanceOf.call(OWLHolder)).toNumber()
 
       await tokenOWL.approve(contractConsumingOWL, 1e18,{ from: OWLHolder })
       const allowanceBefore = (await tokenOWL.allowance.call(OWLHolder, contractConsumingOWL)).toNumber()
 
       await tokenOWL.burnOWL(OWLHolder, 10 ** 18, { from: contractConsumingOWL})
-      assert.equal(balanceBefore - 10 ** 18, (await tokenOWL.balanceOf.call(OWLHolder)).toNumber())
 
-      assert.equal(allowanceBefore - 10 ** 18, (await tokenOWL.allowance.call(OWLHolder, contractConsumingOWL)).toNumber())
+      assert.equal(balanceBefore - 10 ** 18, (await tokenOWL.balanceOf.call(OWLHolder)).toNumber(), 'balance not updated correctly')
+      assert.equal(allowanceBefore - 10 ** 18, (await tokenOWL.allowance.call(OWLHolder, contractConsumingOWL)).toNumber(), 'allowance was not changed correctly')
     })
   })
 })
