@@ -74,6 +74,16 @@ contract TokenOWL is ProxiedMaster, StandardToken {
         minter = newMinter;
     }
 
+
+    /// @dev change owner/creator of the contract. Only the creator/owner of this contract can call this.
+    /// @param newOwner The new address, which should become the owner
+    function setNewOwner(address newOwner)
+        public
+        onlyCreator()
+    {
+        creator = newOwner;
+    }
+
     /// @dev Mints OWL.
     /// @param to Address to which the minted token will be given
     /// @param amount Amount of OWL to be minted
