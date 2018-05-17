@@ -6,7 +6,7 @@ const TokenOWLProxy = artifacts.require('TokenOWLProxy')
 
 
 contract('TokenOWL', (accounts) => {
-  const [creator, minter, altMinter, OWLHolder, notOWLHolder, notApprover, contractConsumingOWL] = accounts
+  const [creator, minter, altMinter, OWLHolder, notOWLHolder, notApprover, contractConsumingOWL, newOwner] = accounts
   let tokenOWL
 
   before(async () => {
@@ -25,6 +25,22 @@ contract('TokenOWL', (accounts) => {
       await assertRejects(tokenOWL.setMinter(minter, { from: other }))
     }
   })
+
+it('allows only the creator/owner to change the owner', async () => {
+    assert.equal(await tokenOWL.creator.call(), creator)
+
+    await tokenOWL.setNewOwner(newOwner, { from: creator })
+    assert.equal(await tokenOWL.creator.call(), newOwner)
+
+    for(let other of [minter, OWLHolder, notOWLHolder]) {
+      await assertRejects(tokenOWL.setMinter(minter, { from: other }))
+    }
+
+    await tokenOWL.setNewOwner(creator, { from: newOwner })
+    assert.equal(await tokenOWL.creator.call(), creator)
+
+  })
+
 
   contract('minting', () => {
     before(async () => {
