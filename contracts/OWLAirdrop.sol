@@ -1,6 +1,6 @@
 pragma solidity ^0.4.23;
 
-import "@gnosis.pm/pm-contracts/contracts/Utils/Math.sol";
+import "@gnosis.pm/util-contracts/contracts/Math.sol";
 import "./TokenOWL.sol";
 
 contract OWLAirdrop {

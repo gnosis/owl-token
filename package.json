@@ -22,6 +22,6 @@
     "truffle": "^4.1.8"
   },
   "dependencies": {
-    "@gnosis.pm/pm-contracts": "^1.0.4"
+    "@gnosis.pm/util-contracts": "^0.2.0"
   }
 }

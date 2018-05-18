@@ -1,6 +1,6 @@
 pragma solidity ^0.4.23;
 
-import "@gnosis.pm/pm-contracts/contracts/Tokens/StandardToken.sol";
+import "@gnosis.pm/util-contracts/contracts/StandardToken.sol";
 import "./ProxyMaster.sol";
 
 contract TokenOWLProxy is ProxyMaster, StandardToken {
