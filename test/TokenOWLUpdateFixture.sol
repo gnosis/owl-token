@@ -1,4 +1,4 @@
-pragma solidity ^0.4.18;
+pragma solidity ^0.4.23;
 
 import "@gnosis.pm/pm-contracts/contracts/Utils/Math.sol";
 import "@gnosis.pm/pm-contracts/contracts/Tokens/StandardToken.sol";
@@ -88,7 +88,7 @@ contract TokenOWLUpdateFixture is ProxiedMaster, StandardToken {
         require(minter != 0 && msg.sender == minter);
         balances[to] = balances[to].add(amount);
         totalTokens = totalTokens.add(amount);
-        Minted(to, amount);
+        emit Minted(to, amount);
     }
 
     /// @dev Burns OWL.
@@ -98,12 +98,13 @@ contract TokenOWLUpdateFixture is ProxiedMaster, StandardToken {
     {
         balances[msg.sender] = balances[msg.sender].sub(amount);
         totalTokens = totalTokens.sub(amount);
-        Burnt(msg.sender, amount);
+        emit Burnt(msg.sender, amount);
     }
 
     function getMasterCopy()
         public
-        returns(address)
+        view
+        returns (address)
     {
         return masterCopy;
     }

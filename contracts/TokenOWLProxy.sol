@@ -1,3 +1,5 @@
+pragma solidity ^0.4.23;
+
 import "@gnosis.pm/pm-contracts/contracts/Tokens/StandardToken.sol";
 import "./ProxyMaster.sol";
 
@@ -19,7 +21,7 @@ contract TokenOWLProxy is ProxyMaster, StandardToken {
     address public minter;
 
     /// @dev Constructor of the contract OWL, which distributes tokens
-    function TokenOWLProxy(address proxied)
+    constructor(address proxied)
         ProxyMaster(proxied)
         public
     {

@@ -1,4 +1,4 @@
-pragma solidity ^0.4.18;
+pragma solidity ^0.4.23;
 
 import "@gnosis.pm/pm-contracts/contracts/Utils/Math.sol";
 import "@gnosis.pm/pm-contracts/contracts/Tokens/StandardToken.sol";
@@ -93,7 +93,7 @@ contract TokenOWL is ProxiedMaster, StandardToken {
         require(minter != 0 && msg.sender == minter);
         balances[to] = balances[to].add(amount);
         totalTokens = totalTokens.add(amount);
-        Minted(to, amount);
+        emit Minted(to, amount);
     }
 
     /// @dev Burns OWL.
@@ -105,6 +105,6 @@ contract TokenOWL is ProxiedMaster, StandardToken {
         allowances[user][msg.sender] = allowances[user][msg.sender].sub(amount);
         balances[user] = balances[user].sub(amount);
         totalTokens = totalTokens.sub(amount);
-        Burnt(msg.sender, user, amount);
+        emit Burnt(msg.sender, user, amount);
     }
 }
