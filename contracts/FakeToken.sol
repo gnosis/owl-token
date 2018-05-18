@@ -1,7 +1,7 @@
 pragma solidity ^0.4.18;
 
-import "@gnosis.pm/gnosis-core-contracts/contracts/Utils/Math.sol";
-import "@gnosis.pm/gnosis-core-contracts/contracts/Tokens/StandardToken.sol";
+import "@gnosis.pm/pm-contracts/contracts/Utils/Math.sol";
+import "@gnosis.pm/pm-contracts/contracts/Tokens/StandardToken.sol";
 
 contract FakeToken is StandardToken {
     using Math for *;

@@ -19,9 +19,9 @@
   "homepage": "https://github.com/gnosis/owl-token#readme",
   "devDependencies": {
     "@digix/tempo": "^0.2.0",
-    "truffle": "^4.0.5"
+    "truffle": "^4.1.8"
   },
   "dependencies": {
-    "@gnosis.pm/gnosis-core-contracts": "^1.0.1"
+    "@gnosis.pm/pm-contracts": "^1.0.4"
   }
 }

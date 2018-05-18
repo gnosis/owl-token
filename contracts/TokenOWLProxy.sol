@@ -1,4 +1,4 @@
-import "@gnosis.pm/gnosis-core-contracts/contracts/Tokens/StandardToken.sol";
+import "@gnosis.pm/pm-contracts/contracts/Tokens/StandardToken.sol";
 import "./ProxyMaster.sol";
 
 contract TokenOWLProxy is ProxyMaster, StandardToken {
