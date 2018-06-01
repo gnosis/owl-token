@@ -9,7 +9,7 @@ const ProxyMaster = artifacts.require('ProxyMaster')
 
 OWLAirdrop.link(MathLib)
 
-contract('OWLAirdrop', (accounts) => {
+contract('OWLAirdrop', accounts => {
   const [creator, holder] = accounts
   const duration = 100
   let fakeGNO, tokenOWL, owlAirdrop, startTime, endTime

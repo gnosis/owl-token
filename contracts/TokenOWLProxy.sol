@@ -1,7 +1,7 @@
-import "@gnosis.pm/gnosis-core-contracts/contracts/Tokens/StandardToken.sol";
-import "./ProxyMaster.sol";
+import "@gnosis.pm/util-contracts/contracts/StandardToken.sol";
+import "@gnosis.pm/util-contracts/contracts/Proxy.sol";
 
-contract TokenOWLProxy is ProxyMaster, StandardToken {
+contract TokenOWLProxy is Proxy, StandardToken {
     using Math for *;
 
     string public constant name = "OWL Token";
@@ -20,7 +20,7 @@ contract TokenOWLProxy is ProxyMaster, StandardToken {
 
     /// @dev Constructor of the contract OWL, which distributes tokens
     function TokenOWLProxy(address proxied)
-        ProxyMaster(proxied)
+        Proxy(proxied)
         public
     {
         creator = msg.sender;

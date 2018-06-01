@@ -11,8 +11,7 @@ let tokenOWL, tokenOWLNew
 let pr
 let airDrop
 
-
-contract('TokenOWL - Proxy', (accounts) => {
+contract('TokenOWL - Proxy', accounts => {
   const [ master, notMaster, minter] = accounts
 
   before(async () => {
@@ -23,12 +22,12 @@ contract('TokenOWL - Proxy', (accounts) => {
     tokenOWLNew = await TokenOWLUpdateFixture.new()
   })
 
-  const assertIsCreator = async (acc) => {
+  const assertIsCreator = async acc => {
     const creator = await tokenOWL.creator.call()
     assert.strictEqual(creator, master, 'master account should be creator')
   }
 
-  const assertIsNotCreator = async (acc) => {
+  const assertIsNotCreator = async acc => {
     const creator = await tokenOWL.creator.call()
     assert.notStrictEqual(creator, acc, ' account should not be contract creator')
   }
@@ -41,7 +40,7 @@ contract('TokenOWL - Proxy', (accounts) => {
   it('masterCopy can\'t be updated before masterCopyCountdown was started', async () => {
     await assertIsCreator(master)
     await assertRejects(tokenOWL.updateMasterCopy({ from: master }), 'should reject as startMasterCopyCountdown wasn\'t yet called')
-   })
+  })
 
   it('not creator can\'t call startMasterCopyCountdown', async () => {
     await assertIsNotCreator(notMaster)
@@ -71,7 +70,7 @@ contract('TokenOWL - Proxy', (accounts) => {
 
   it('creator can update masterCopy after time limit', async () => {
     await assertIsCreator(master)
-    await tokenOWL.setMinter(minter) 
+    await tokenOWL.setMinter(minter)
     const ans = await tokenOWL.updateMasterCopy({ from: master })
     tokenOWL = TokenOWLUpdateFixture.at(TokenOWLProxy.address)
 
@@ -86,9 +85,9 @@ contract('TokenOWL - Proxy', (accounts) => {
     // testing that logic changed actually:
     // in TokenOWL, setupTokenOWL is not existent
     // in TokenOWLUpdateFixture setupTokenOWL should just set the minter ==0
-    await tokenOWL.setupTokenOWL();
-    const newMinter= await tokenOWL.minter.call()
-    //console.log("new minter"+newMinter)
+    await tokenOWL.setupTokenOWL()
+    const newMinter = await tokenOWL.minter.call()
+    // console.log("new minter"+newMinter)
     assert.equal(newMinter, 0)
   })
 })

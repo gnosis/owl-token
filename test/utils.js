@@ -14,5 +14,5 @@ const assertRejects = async (q, msg) => {
 }
 
 module.exports = {
-  assertRejects,
+  assertRejects
 }
