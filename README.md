@@ -8,7 +8,11 @@ The token and contract can be in **Etherscan**:
   * TokenOWL: [https://rinkeby.etherscan.io/token/0x6388f297c3fc5b7ff879181fc337efe14e016865]()
   * TokenOWLProxy: [https://rinkeby.etherscan.io/token/0x540dc940c39166e8fa16ccb6686a088e567f1a79]()
   * OWLAirdrop: Not yet deployed
-* **Kovan**: Not yet deployed
+* **Kovan**:
+  * TokenOWL: [https://kovan.etherscan.io/token/0x6388f297c3fc5b7ff879181fc337efe14e016865]()
+  * TokenOWLProxy: [https://kovan.etherscan.io/token/0x540dc940c39166e8fa16ccb6686a088e567f1a79]()
+  * OWLAirdrop: Not yet deployed
+  
 
 ## Setup and show the networks
 ```bash
