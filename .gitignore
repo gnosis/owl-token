@@ -59,3 +59,5 @@ typings/
 
 # Truffle build
 build/
+
+.history

@@ -4,8 +4,21 @@
   "description": "The OWL token and related smart contracts",
   "main": "index.js",
   "scripts": {
+    "rpc": "ganache-cli -d --mnemonic 'candy maple cake sugar pudding cream honey rich smooth crumble sweet treat' --defaultBalanceEther '500'",
+    "prepack": "npm run restore",
     "test": "truffle test",
-    "truffle": "truffle"
+    "truffle": "truffle",
+    "networks-extract": "node src/extract_network_info.js",
+    "networks-inject": "node src/inject_network_info.js",
+    "networks-reset": "mkdir -p build/contracts && truffle networks --clean && npm run networks-inject",
+    "networks": "truffle networks",
+    "compile-legacy": "node src/compileLegacyGNO.js",
+    "compile": "eslint --fix . && eslint . && truffle compile && npm run compile-legacy",
+    "restore": "npm run compile && npm run networks-reset",
+    "postinstall": "npm install @gnosis.pm/util-contracts truffle-hdwallet-provider",
+    "migrate-dependencies": "cd node_modules/@gnosis.pm/util-contracts && npm run migrate",
+    "migrate": "truffle migrate",
+    "lint": "eslint ."
   },
   "repository": {
     "type": "git",
@@ -16,12 +29,22 @@
   "bugs": {
     "url": "https://github.com/gnosis/owl-token/issues"
   },
-  "homepage": "https://github.com/gnosis/owl-token#readme",
-  "devDependencies": {
-    "@digix/tempo": "^0.2.0",
-    "truffle": "^4.0.5"
-  },
+  "homepage": "https://github.com/gnosis/owl-token#readme",  
   "dependencies": {
-    "@gnosis.pm/gnosis-core-contracts": "^1.0.1"
+    "@gnosis.pm/util-contracts": "^0.2.10"
+  },
+  "devDependencies": {
+    "eslint": "^4.19.1",
+    "eslint-config-standard": "^11.0.0",
+    "eslint-plugin-import": "^2.11.0",
+    "eslint-plugin-node": "^6.0.0",
+    "eslint-plugin-promise": "^3.7.0",
+    "eslint-plugin-standard": "^3.1.0",
+    "@digix/tempo": "^0.2.0",
+    "truffle": "4.1.5",
+    "truffle-contract": "^3.0.5",
+    "truffle-flattener": "^1.2.5",
+    "truffle-hdwallet-provider": "^0.0.5",
+    "ganache-cli": "^6.1.0"
   }
 }
