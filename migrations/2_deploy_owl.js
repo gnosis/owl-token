@@ -5,14 +5,17 @@ const contract = require('truffle-contract')
 
 const TokenOWL = artifacts.require('TokenOWL')
 const TokenOWLProxy = artifacts.require('TokenOWLProxy')
-const ProxyMaster = artifacts.require('ProxyMaster')
 
 const Math = contract(require('@gnosis.pm/util-contracts/build/contracts/Math'))
+const ProxyMaster = contract(require('@gnosis.pm/util-contracts/build/contracts/Proxy'))
 
 module.exports = function (deployer) {
+  Math.setProvider(deployer.provider)
+  // ProxyMaster.setProvider(deployer.provider)
+
   return deployer
-    .then(Math.deployed())
-    .then(() => deployer.link(MathLib, [TokenOWL, TokenOWLProxy, ProxyMaster]))
+    .then(() => Math.deployed())
+    .then(() => deployer.link(Math, [ TokenOWL, TokenOWLProxy ])) // ProxyMaster
   	.then(() => deployer.deploy(TokenOWL))
-  	.then(tokenOwl => deployer.deploy(TokenOWLProxy, tokenOwl.address))
+  	.then(() => deployer.deploy(TokenOWLProxy, TokenOWL.address))
 }
