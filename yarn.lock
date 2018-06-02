@@ -5158,7 +5158,7 @@ truffle-flattener@^1.2.5:
     truffle-resolver "^4.0.1"
     tsort "0.0.1"
 
-truffle-hdwallet-provider@^0.0.5:
+truffle-hdwallet-provider@0.0.5:
   version "0.0.5"
   resolved "https://registry.yarnpkg.com/truffle-hdwallet-provider/-/truffle-hdwallet-provider-0.0.5.tgz#6e3dc0fb607a40c8bf02312b9a6aa1ce49883902"
   dependencies:
