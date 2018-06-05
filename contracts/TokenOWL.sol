@@ -92,7 +92,7 @@ contract TokenOWL is Proxied, StandardToken {
         require(minter != 0 && msg.sender == minter);
         balances[to] = balances[to].add(amount);
         totalTokens = totalTokens.add(amount);
-        Minted(to, amount);
+        emit Minted(to, amount);
     }
 
     /// @dev Burns OWL.
@@ -104,6 +104,6 @@ contract TokenOWL is Proxied, StandardToken {
         allowances[user][msg.sender] = allowances[user][msg.sender].sub(amount);
         balances[user] = balances[user].sub(amount);
         totalTokens = totalTokens.sub(amount);
-        Burnt(msg.sender, user, amount);
+        emit Burnt(msg.sender, user, amount);
     }
 }
