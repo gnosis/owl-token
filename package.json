@@ -21,6 +21,7 @@
     "migrate-utils": "cd node_modules/@gnosis.pm/util-contracts && npm run migrate",
     "migrate-dep": "npm run migrate-utils && npm run networks-inject-dep && npm run migrate-gno",
     "migrate": "truffle migrate",
+    "migrate-all": "npm run migrate-dep && npm run migrate",
     "lint": "eslint ."
   },
   "repository": {

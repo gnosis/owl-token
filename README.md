@@ -36,6 +36,18 @@ yarn migrate-dep
 
 # Execute the migrations
 yarn migrate
+
+# Or you can do all at once using
+yarn migrate-all
+```
+
+## Change the lock period time
+The deployment script has an environemt variable `GNO_LOCK_PERIOD_IN_HOURS` that 
+allows you to set a different lock period (`30 days` by default).
+
+```bash
+# Deploy for develop with just 1h lock perio
+GNO_LOCK_PERIOD_IN_HOURS=1 yarn migrate
 ```
 
 ## Generate a new version
