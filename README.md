@@ -5,12 +5,12 @@ The token and contract can be in **Etherscan**:
 
 * **Mainnet**: Not yet deployed
 * **Rinkeby**:
-  * TokenOWL: [https://rinkeby.etherscan.io/token/0x6388f297c3fc5b7ff879181fc337efe14e016865]()
-  * TokenOWLProxy: [https://rinkeby.etherscan.io/token/0x540dc940c39166e8fa16ccb6686a088e567f1a79]()
-  * OWLAirdrop: Not yet deployed
+  * TokenOWL: [https://rinkeby.etherscan.io/token/0x0df2bc9c964c4c4f7d1e9820041402a5d4668846]()
+  * TokenOWLProxy: [https://rinkeby.etherscan.io/token/0x9832c7df3d3652c3953fa7c88f9bd252bd44404f]()
+  * OWLAirdrop: [https://rinkeby.etherscan.io/token/0x7f6119c26eb150dc8a4b63bf9bfd0ab24aafc8f9]()
 * **Kovan**:
-  * TokenOWL: [https://kovan.etherscan.io/token/0x6388f297c3fc5b7ff879181fc337efe14e016865]()
-  * TokenOWLProxy: [https://kovan.etherscan.io/token/0x540dc940c39166e8fa16ccb6686a088e567f1a79]()
+  * TokenOWL: [https://kovan.etherscan.io/token/]()
+  * TokenOWLProxy: [https://kovan.etherscan.io/token/]()
   * OWLAirdrop: Not yet deployed
   
 
