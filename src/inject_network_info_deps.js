@@ -4,7 +4,7 @@ const path = require('path')
 const NODE_MODULES_PATH = path.join(__dirname, '../node_modules')
 
 injectNetworksDeps({
-  buildDir: '@gnosis.pm/util-contracts/build/contracts',
+  buildPath: '@gnosis.pm/util-contracts/build/contracts',
   packages: [
     '@gnosis.pm/gno-token'
   ],

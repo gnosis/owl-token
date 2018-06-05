@@ -6,15 +6,15 @@
   version "0.2.0"
   resolved "https://registry.yarnpkg.com/@digix/tempo/-/tempo-0.2.0.tgz#5daf91ad788d6b596a19aad22e2e667e4ec808a8"
 
-"@gnosis.pm/gno-token@^0.3.0":
-  version "0.3.0"
-  resolved "https://registry.yarnpkg.com/@gnosis.pm/gno-token/-/gno-token-0.3.0.tgz#e1b534867504873e212874b50b7d010832f4604d"
+"@gnosis.pm/gno-token@^0.3.1":
+  version "0.3.1"
+  resolved "https://registry.yarnpkg.com/@gnosis.pm/gno-token/-/gno-token-0.3.1.tgz#53856b88b5422464d07b63ef3295eff76a4736e6"
   dependencies:
-    "@gnosis.pm/util-contracts" "^0.2.10"
+    "@gnosis.pm/util-contracts" "^0.2.12"
 
-"@gnosis.pm/util-contracts@^0.2.10", "@gnosis.pm/util-contracts@^0.2.11":
-  version "0.2.11"
-  resolved "https://registry.yarnpkg.com/@gnosis.pm/util-contracts/-/util-contracts-0.2.11.tgz#95b526899dc748064bc93e78cc0b9b9863ed2b44"
+"@gnosis.pm/util-contracts@^0.2.12":
+  version "0.2.12"
+  resolved "https://registry.yarnpkg.com/@gnosis.pm/util-contracts/-/util-contracts-0.2.12.tgz#fc75dd01c8e3a8ff289be1290047359dc1db52ad"
 
 "@mrmlnc/readdir-enhanced@^2.2.1":
   version "2.2.1"
