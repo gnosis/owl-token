@@ -9,9 +9,9 @@ The token and contract can be in **Etherscan**:
   * TokenOWLProxy: [https://rinkeby.etherscan.io/token/0x9832c7df3d3652c3953fa7c88f9bd252bd44404f]()
   * OWLAirdrop: [https://rinkeby.etherscan.io/token/0x7f6119c26eb150dc8a4b63bf9bfd0ab24aafc8f9]()
 * **Kovan**:
-  * TokenOWL: [https://kovan.etherscan.io/token/]()
-  * TokenOWLProxy: [https://kovan.etherscan.io/token/]()
-  * OWLAirdrop: Not yet deployed
+  * TokenOWL: [https://kovan.etherscan.io/token/0xaa9654902f80fc8cf02e54de1f6886727c1df0e6]()
+  * TokenOWLProxy: [https://kovan.etherscan.io/token/0xe2a323b60238b1e04da10f474f89a02d6b45c16c]()
+  * OWLAirdrop: [https://kovan.etherscan.io/token/0xa4773c38a0a5d7b55d8b9fede1a5eeeb74eea345]()
   
 
 ## Setup and show the networks
