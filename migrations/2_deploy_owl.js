@@ -11,7 +11,6 @@ const ProxyMaster = contract(require('@gnosis.pm/util-contracts/build/contracts/
 
 module.exports = function (deployer) {
   Math.setProvider(deployer.provider)
-  // ProxyMaster.setProvider(deployer.provider)
 
   return deployer
     .then(() => Math.deployed())

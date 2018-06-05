@@ -10,13 +10,16 @@
     "truffle": "truffle",
     "networks-extract": "node src/extract_network_info.js",
     "networks-inject": "node src/inject_network_info.js",
+    "networks-inject-dep": "node src/inject_network_info_deps.js",
     "networks-reset": "mkdir -p build/contracts && truffle networks --clean && npm run networks-inject",
     "networks": "truffle networks",
     "compile-todo": "eslint --fix . && eslint . && truffle compile",
     "compile": "truffle compile",
     "restore": "npm run compile && npm run networks-reset",
     "postinstall": "npm install @gnosis.pm/util-contracts truffle-hdwallet-provider",
-    "migrate-dep": "cd node_modules/@gnosis.pm/util-contracts && npm run migrate",
+    "migrate-gno": "cd node_modules/@gnosis.pm/gno-token && npm run migrate",
+    "migrate-utils": "cd node_modules/@gnosis.pm/util-contracts && npm run migrate",
+    "migrate-dep": "npm run migrate-utils && npm run networks-inject-dep && npm run migrate-gno",
     "migrate": "truffle migrate",
     "lint": "eslint ."
   },
@@ -31,7 +34,8 @@
   },
   "homepage": "https://github.com/gnosis/owl-token#readme",
   "dependencies": {
-    "@gnosis.pm/util-contracts": "^0.2.10"
+    "@gnosis.pm/gno-token": "^0.3.0",
+    "@gnosis.pm/util-contracts": "^0.2.11"
   },
   "devDependencies": {
     "@digix/tempo": "^0.2.0",
