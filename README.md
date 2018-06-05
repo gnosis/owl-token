@@ -5,13 +5,13 @@ The token and contract can be in **Etherscan**:
 
 * **Mainnet**: Not yet deployed
 * **Rinkeby**:
-  * TokenOWL: [https://rinkeby.etherscan.io/token/0x0df2bc9c964c4c4f7d1e9820041402a5d4668846]()
-  * TokenOWLProxy: [https://rinkeby.etherscan.io/token/0x9832c7df3d3652c3953fa7c88f9bd252bd44404f]()
-  * OWLAirdrop: [https://rinkeby.etherscan.io/token/0x7f6119c26eb150dc8a4b63bf9bfd0ab24aafc8f9]()
+  * TokenOWL: [https://rinkeby.etherscan.io/token/0xc5528d902d1b40d25749f0fb94269e41ee0467d0]()
+  * TokenOWLProxy: [https://rinkeby.etherscan.io/token/0x3d28c26f17e8dce0798c6bc784de583bc0838faa]()
+  * OWLAirdrop: [https://rinkeby.etherscan.io/token/0xf0089e41c00a38706352a0827ceb7425e6f9030b]()
 * **Kovan**:
-  * TokenOWL: [https://kovan.etherscan.io/token/0xaa9654902f80fc8cf02e54de1f6886727c1df0e6]()
-  * TokenOWLProxy: [https://kovan.etherscan.io/token/0xe2a323b60238b1e04da10f474f89a02d6b45c16c]()
-  * OWLAirdrop: [https://kovan.etherscan.io/token/0xa4773c38a0a5d7b55d8b9fede1a5eeeb74eea345]()
+  * TokenOWL: [https://kovan.etherscan.io/token/0x3333c371845dd451280373aa4b3d632624fd2857]()
+  * TokenOWLProxy: [https://kovan.etherscan.io/token/0xd68ba7119d2ac4e6ff78e75c3760fc385d4bca64]()
+  * OWLAirdrop: [https://kovan.etherscan.io/token/0x3333c371845dd451280373aa4b3d632624fd2857]()
   
 
 ## Setup and show the networks
