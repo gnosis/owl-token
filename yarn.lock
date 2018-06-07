@@ -6,17 +6,17 @@
   version "0.2.0"
   resolved "https://registry.yarnpkg.com/@digix/tempo/-/tempo-0.2.0.tgz#5daf91ad788d6b596a19aad22e2e667e4ec808a8"
 
-"@gnosis.pm/gno-token@^0.4.0":
-  version "0.4.0"
-  resolved "https://registry.yarnpkg.com/@gnosis.pm/gno-token/-/gno-token-0.4.0.tgz#bdf6fb71b89eed8ec2f7cda264f741f1d3ad6e95"
+"@gnosis.pm/gno-token@^0.5.0":
+  version "0.5.0"
+  resolved "https://registry.yarnpkg.com/@gnosis.pm/gno-token/-/gno-token-0.5.0.tgz#02a82265615cbc3a11ea1fc34f17f123bf9e2f93"
   dependencies:
-    "@gnosis.pm/util-contracts" "^0.2.14"
+    "@gnosis.pm/util-contracts" "^0.3.0"
     truffle-contract "^3.0.5"
     truffle-hdwallet-provider "^0.0.5"
 
-"@gnosis.pm/util-contracts@^0.2.14":
-  version "0.2.14"
-  resolved "https://registry.yarnpkg.com/@gnosis.pm/util-contracts/-/util-contracts-0.2.14.tgz#587cd6268a7d08dbc0d08b1c7bd375e19549d833"
+"@gnosis.pm/util-contracts@^0.3.0":
+  version "0.3.0"
+  resolved "https://registry.yarnpkg.com/@gnosis.pm/util-contracts/-/util-contracts-0.3.0.tgz#cf47a0a741758d8bf498b1344795f95af032dde9"
 
 abstract-leveldown@~2.6.0:
   version "2.6.3"

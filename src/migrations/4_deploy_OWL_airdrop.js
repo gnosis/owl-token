@@ -1,20 +1,13 @@
-/* global artifacts */
-/* eslint no-undef: "error" */
+async function migrate (artifacts, deployer, network, accounts, web3) {
+  const contract = require('truffle-contract')
 
-const contract = require('truffle-contract')
-
-const TokenOWL = artifacts.require('TokenOWL')
-const TokenOWLProxy = artifacts.require('TokenOWLProxy')
-const OWLAirdrop = artifacts.require('OWLAirdrop')
-
-const Math = contract(require('@gnosis.pm/util-contracts/build/contracts/Math'))
-const TokenGNO = contract(require('@gnosis.pm/gno-token/build/contracts/TokenGNO'))
-
-const GNO_LOCK_PERIOD_IN_HOURS = process.env.GNO_LOCK_PERIOD_IN_HOURS || 30 * 24 // 30 days
-
-module.exports = function (deployer) {
-  Math.setProvider(deployer.provider)
-  TokenGNO.setProvider(deployer.provider)
+  const TokenOWL = artifacts.require('TokenOWL')
+  const TokenOWLProxy = artifacts.require('TokenOWLProxy')
+  const OWLAirdrop = artifacts.require('OWLAirdrop')
+  const Math = artifacts.require('Math')
+  const TokenGNO = artifacts.require('TokenGNO')
+  
+  const GNO_LOCK_PERIOD_IN_HOURS = process.env.GNO_LOCK_PERIOD_IN_HOURS || 30 * 24 // 30 days
 
   return deployer
     .then(() => Math.deployed())
@@ -22,7 +15,7 @@ module.exports = function (deployer) {
     .then(() => TokenOWL.deployed())
     .then((tokenOwl) => TokenOWLProxy.deployed())
     .then(() => deployer.link(Math, [ OWLAirdrop ]))
-    .then(() => getTime())
+    .then(() => getTime(web3))
     .then(time => {
       const owlProxyAddress = TokenOWLProxy.address
       const gnoAddress = TokenGNO.address
@@ -42,7 +35,7 @@ module.exports = function (deployer) {
     })
 }
 
-function getTime () {
+function getTime (web3) {
   return new Promise((resolve, reject) => {
     web3.eth.getBlock('latest', (err, block) => {
       if (err) {
@@ -52,5 +45,7 @@ function getTime () {
       }
     })
   })
-}
+} 
+
+module.exports = migrate
 

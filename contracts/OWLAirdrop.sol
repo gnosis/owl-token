@@ -1,13 +1,13 @@
 pragma solidity ^0.4.21;
 
-import "@gnosis.pm/util-contracts/contracts/Math.sol";
+import "@gnosis.pm/gno-token/contracts/TokenGNO.sol";
 import "./TokenOWL.sol";
 
 contract OWLAirdrop {
     using Math for *;
 
     TokenOWL public tokenOWL;
-    Token public tokenGNO;
+    TokenGNO public tokenGNO;
     mapping(address => uint) public lockedGNO;
     uint public endTime;
 
@@ -15,7 +15,7 @@ contract OWLAirdrop {
     /// @param _tokenOWL The OWL token contract
     /// @param _tokenGNO The GNO token contract
     /// @param _endTime The unix epoch timestamp in seconds of the time airdrop ends
-    function OWLAirdrop(TokenOWL _tokenOWL, Token _tokenGNO, uint _endTime)
+    function OWLAirdrop(TokenOWL _tokenOWL, TokenGNO _tokenGNO, uint _endTime)
         public
     {
         require(now <= _endTime);

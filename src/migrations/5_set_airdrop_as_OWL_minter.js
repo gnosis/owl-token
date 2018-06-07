@@ -1,12 +1,8 @@
-/* global artifacts */
-/* eslint no-undef: "error" */
-const contract = require('truffle-contract')
-
-const TokenOWL = artifacts.require('TokenOWL')
-const TokenOWLProxy = artifacts.require('TokenOWLProxy')
-const OWLAirdrop = artifacts.require('OWLAirdrop')
-
-module.exports = function (deployer, network, accounts) {
+async function migrate (artifacts, deployer, network, accounts, web3) {
+  const TokenOWL = artifacts.require('TokenOWL')
+  const TokenOWLProxy = artifacts.require('TokenOWLProxy')
+  const OWLAirdrop = artifacts.require('OWLAirdrop')
+  
   return deployer
     .then(() => TokenOWL.deployed())
     .then(() => TokenOWLProxy.deployed())
@@ -25,5 +21,7 @@ module.exports = function (deployer, network, accounts) {
       return owl.setMinter(airdropAddress, {
         from: owner
       })
-    })
+    })  
 }
+
+module.exports = migrate
