@@ -6,8 +6,6 @@ const TokenOWL = artifacts.require('TokenOWL')
 const TokenOWLProxy = artifacts.require('TokenOWLProxy')
 const OWLAirdrop = artifacts.require('OWLAirdrop')
 
-const GNO_LOCK_PERIOD_IN_HOURS = process.env.GNO_LOCK_PERIOD_IN_HOURS || 30 * 24 // 30 days
-
 module.exports = function (deployer, network, accounts) {
   return deployer
     .then(() => TokenOWL.deployed())

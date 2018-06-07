@@ -23,12 +23,23 @@ module.exports = function (deployer) {
     .then((tokenOwl) => TokenOWLProxy.deployed())
     .then(() => deployer.link(Math, [ OWLAirdrop ]))
     .then(() => getTime())
-    .then(time => deployer.deploy(
-      OWLAirdrop,
-      TokenOWLProxy.address,
-      TokenGNO.address,
-      (time + GNO_LOCK_PERIOD_IN_HOURS * 60 * 60)
-    ))
+    .then(time => {
+      const owlProxyAddress = TokenOWLProxy.address
+      const gnoAddress = TokenGNO.address
+      const endTime = time + GNO_LOCK_PERIOD_IN_HOURS * 60 * 60
+
+      console.log('Deploy AirDrop:')
+      console.log('\t OWL proxy address: %s', owlProxyAddress)
+      console.log('\t GNO address: %s', gnoAddress)
+      console.log('\t End time: %s', new Date(endTime * 1000))
+
+      return deployer.deploy(
+        OWLAirdrop,
+        owlProxyAddress,
+        gnoAddress,
+        endTime
+      )
+    })
 }
 
 function getTime () {
