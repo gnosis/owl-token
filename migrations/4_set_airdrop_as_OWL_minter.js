@@ -24,7 +24,7 @@ module.exports = function (deployer, network, accounts) {
       console.log('\t OWL Proxy address: %s', owlProxyAddress)
 
       const owl = TokenOWL.at(owlProxyAddress)
-      owl.setMinter(airdropAddress, {
+      return owl.setMinter(airdropAddress, {
         from: owner
       })
     })
