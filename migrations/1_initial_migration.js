@@ -1,4 +1,4 @@
-/* global artifacts, web3 */
+/* global artifacts */
 /* eslint no-undef: "error" */
 
 const Migrations = artifacts.require('Migrations')
