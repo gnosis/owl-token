@@ -1,6 +1,6 @@
 #!/bin/bash
 
-if [[ $TRAVIS_BRANCH = "master" || $TRAVIS_BRANCH = "develop" ]]; then
+if [[ $TRAVIS_BRANCH = "master" || $TRAVIS_BRANCH = "develop" || $TRAVIS_BRANCH = "fixxing/tests"]]; then
   echo " ==> Detected PRINCIPAL branch - compiling and testing contracts"
   #jump back to root
   cd $TRAVIS_BUILD_DIR
