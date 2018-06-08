@@ -12,3 +12,4 @@ if [[ $TRAVIS_BRANCH = "master" || $TRAVIS_BRANCH = "develop" || $TRAVIS_BRANCH 
 else
   echo " ==> No execution for branches other than MASTER or DEVELOP"
 fi;
+# testing
