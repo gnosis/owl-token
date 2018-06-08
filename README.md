@@ -5,15 +5,10 @@ The token and contract can be in **Etherscan**:
 
 * **Mainnet**: Not yet deployed
 * **Rinkeby**:
-  * TokenOWL: [https://rinkeby.etherscan.io/token/0xc5528d902d1b40d25749f0fb94269e41ee0467d0]()
-  * TokenOWLProxy: [https://rinkeby.etherscan.io/token/0x3d28c26f17e8dce0798c6bc784de583bc0838faa]()
-  * OWLAirdrop: [https://rinkeby.etherscan.io/token/0xf0089e41c00a38706352a0827ceb7425e6f9030b]()
-* **Kovan**:
-  * TokenOWL: [https://kovan.etherscan.io/token/0x3333c371845dd451280373aa4b3d632624fd2857]()
-  * TokenOWLProxy: [https://kovan.etherscan.io/token/0xd68ba7119d2ac4e6ff78e75c3760fc385d4bca64]()
-  * OWLAirdrop: [https://kovan.etherscan.io/token/0x3333c371845dd451280373aa4b3d632624fd2857]()
+  * TokenOWL: [https://rinkeby.etherscan.io/token/0x3414655806e34e2f55dd96fd1e6beafff33b9382]()
+  * TokenOWLProxy: [https://rinkeby.etherscan.io/token/0x031cc2c635695c9bdb563a3541e5914fe22b5a95]()
+  * OWLAirdrop: [https://rinkeby.etherscan.io/token/0xa4912dce7d37111ba534409e76187fe6677d5319]()
   
-
 ## Setup and show the networks
 ```bash
 # Install dependencies
