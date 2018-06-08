@@ -1,10 +1,11 @@
 pragma solidity ^0.4.21;
 
-import "@gnosis.pm/gnosis-core-contracts/contracts/Utils/Math.sol";
-import "@gnosis.pm/gnosis-core-contracts/contracts/Tokens/StandardToken.sol";
-import "../contracts/ProxyMaster.sol";
 
-contract TokenOWLUpdateFixture is ProxiedMaster, StandardToken {
+import "@gnosis.pm/util-contracts/contracts/Math.sol";
+import "@gnosis.pm/util-contracts/contracts/StandardToken.sol";
+import "@gnosis.pm/util-contracts/contracts/Proxy.sol";
+
+contract TokenOWLUpdateFixture is Proxied, StandardToken {
     using Math for *;
 
     string public constant name = "OWL Token";
