@@ -37,12 +37,12 @@ yarn migrate-all
 ```
 
 ## Change the lock period time
-The deployment script has an environemt variable `GNO_LOCK_PERIOD_IN_HOURS` that 
+The deployment script has an environemt variable `LOCK_END_TIME` that 
 allows you to set a different lock period (`30 days` by default).
 
 ```bash
-# Deploy for develop with just 1h lock perio
-GNO_LOCK_PERIOD_IN_HOURS=1 yarn migrate
+# Deploy for develop with a given end time for lock period
+LOCK_END_TIME='2018-06-12T16:00:00+02:00' yarn migrate
 ```
 
 ## Generate a new version

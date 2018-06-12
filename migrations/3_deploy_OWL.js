@@ -8,7 +8,6 @@ module.exports = function (deployer, network, accounts) {
     artifacts,
     deployer,
     network,
-    accounts,
-    gnoLockPeriodInHours: process.env.GNO_LOCK_PERIOD_IN_HOURS
+    accounts
   })
 }
