@@ -5,9 +5,9 @@ The token and contract can be in **Etherscan**:
 
 * **Mainnet**: Not yet deployed
 * **Rinkeby**:
-  * TokenOWL: [https://rinkeby.etherscan.io/token/0x3414655806e34e2f55dd96fd1e6beafff33b9382]()
-  * TokenOWLProxy: [https://rinkeby.etherscan.io/token/0x031cc2c635695c9bdb563a3541e5914fe22b5a95]()
-  * OWLAirdrop: [https://rinkeby.etherscan.io/token/0xa4912dce7d37111ba534409e76187fe6677d5319]()
+  * TokenOWL: [https://rinkeby.etherscan.io/token/]()
+  * TokenOWLProxy: [https://rinkeby.etherscan.io/token/]()
+  * OWLAirdrop: [https://rinkeby.etherscan.io/token/]()
   
 ## Setup and show the networks
 ```bash
