@@ -11,7 +11,7 @@
     "networks-extract": "node src/extract_network_info.js",
     "networks-inject": "node src/inject_network_info.js",
     "networks-inject-dep": "node src/inject_network_info_deps.js",
-    "networks-reset": "mkdir -p build/contracts && truffle networks --clean && npm run networks-inject",
+    "networks-reset": "truffle networks --clean && npm run networks-inject",
     "networks": "truffle networks",
     "compile-todo": "eslint --fix . && eslint . && truffle compile",
     "compile": "truffle compile",
