@@ -1,6 +1,6 @@
 {
   "name": "@gnosis.pm/owl-token",
-  "version": "0.14.0",
+  "version": "0.15.0",
   "description": "The OWL token and related smart contracts",
   "main": "index.js",
   "scripts": {
@@ -11,11 +11,11 @@
     "networks-extract": "node src/extract_network_info.js",
     "networks-inject": "node src/inject_network_info.js",
     "networks-inject-dep": "node src/inject_network_info_deps.js",
-    "networks-reset": "mkdir -p build/contracts && truffle networks --clean && npm run networks-inject",
+    "networks-reset": "truffle networks --clean && npm run networks-inject",
     "networks": "truffle networks",
     "compile-todo": "eslint --fix . && eslint . && truffle compile",
     "compile": "truffle compile",
-    "restore": "rm -rf build && npm run compile && npm run networks-reset",
+    "restore": "truffle compile --all && npm run networks-reset",
     "migrate": "truffle migrate",
     "lint": "eslint ."
   },
