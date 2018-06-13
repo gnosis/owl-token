@@ -30,6 +30,12 @@
     }
   },
   "TokenOWL": {
+    "1": {
+      "events": {},
+      "links": {},
+      "address": "0x694c68c7577a9a6a8cf2f6da0066790201afc260",
+      "transactionHash": "0xff183f7b9392f394f32576873363213d84297431424dd6b83480ee542e0db56b"
+    },
     "4": {
       "events": {},
       "links": {},
@@ -43,6 +49,12 @@
     }
   },
   "TokenOWLProxy": {
+    "1": {
+      "events": {},
+      "links": {},
+      "address": "0x1a5f9352af8af974bfc03399e3767df6370d82e4",
+      "transactionHash": "0x71675106ed9d083e7b3f601d568ee7a7ad91eaeb9f3645d063b5ea91dce2d1cb"
+    },
     "4": {
       "events": {},
       "links": {},

@@ -18,6 +18,6 @@ module.exports = truffleConfig({
   gasPriceGWei,
   gas,
   aditionalNetwork,
-  urlMainnet: 'https://node.mainnet.gnosis.pm',
+  urlMainnet: 'https://node-green.mainnet.gnosis.pm',
   urlRinkeby: 'https://rinkeby.infura.io/' // 'http://node.rinkeby.gnosisdev.com:8545'
 })
