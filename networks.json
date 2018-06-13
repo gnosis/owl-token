@@ -1,34 +1,26 @@
 {
-  "Migrations": {
-    "4": {
-      "events": {},
-      "links": {},
-      "address": "0x7f776f7404fea9ede96f2296466226e5474f8d52",
-      "transactionHash": "0x3e2d356f7e73b37113f696cc4e653d1ac08d8627ae337015852f21361a5b52bb"
-    }
-  },
   "OWLAirdrop": {
     "4": {
       "events": {},
       "links": {},
-      "address": "0xa4912dce7d37111ba534409e76187fe6677d5319",
-      "transactionHash": "0xe1157fbb8f5c91638a39fcdf9fb352dd6caf323bb12e2147bc46391e4b95c517"
+      "address": "0x649df27950fd6e2999255ac9a907be79aaa75bd3",
+      "transactionHash": "0x5bae71659e6a7f83bce47c1b452546c87e029c465a6a49f4f2f0c0131f669277"
     }
   },
   "TokenOWL": {
     "4": {
       "events": {},
       "links": {},
-      "address": "0x3414655806e34e2f55dd96fd1e6beafff33b9382",
-      "transactionHash": "0x970434a43f9e34ca8caf8325c520cc68f7954c6f283085f3c59f27b19fcbb5dc"
+      "address": "0x8d57f35f49fb6194151dca453d89fc394efeb0c5",
+      "transactionHash": "0x547ef7a6b9a37b9bb4aa6bb83451f1d656016fea50f0f54c8f1be57eaa7372cf"
     }
   },
   "TokenOWLProxy": {
     "4": {
       "events": {},
       "links": {},
-      "address": "0x031cc2c635695c9bdb563a3541e5914fe22b5a95",
-      "transactionHash": "0x1626f394e61a0292ce2b1e697c0adc99e57582a6d53530e265387a4423d9865e"
+      "address": "0x9187a7788410f54a630407fa994c1555722f9abc",
+      "transactionHash": "0x871157da8769294532eba58557e4edebadaa983bd2bba45105aac527f9cbe194"
     }
   }
 }

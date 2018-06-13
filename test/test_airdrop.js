@@ -5,7 +5,6 @@ const TokenOWL = artifacts.require('TokenOWL')
 const TokenOWLProxy = artifacts.require('TokenOWLProxy')
 const FakeToken = artifacts.require('FakeToken')
 const OWLAirdrop = artifacts.require('OWLAirdrop')
-const ProxyMaster = artifacts.require('ProxyMaster')
 
 OWLAirdrop.link(MathLib)
 
@@ -15,7 +14,7 @@ contract('OWLAirdrop', accounts => {
   let fakeGNO, tokenOWL, owlAirdrop, startTime, endTime
 
   before(async () => {
-    fakeGNO = await FakeToken.deployed()
+    fakeGNO = await FakeToken.new()
     const ProxyMasterContract = await TokenOWLProxy.deployed()
     tokenOWL = TokenOWL.at(ProxyMasterContract.address)
     startTime = (await web3.eth.getBlock('pending')).timestamp

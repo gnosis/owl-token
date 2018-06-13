@@ -1,20 +1,22 @@
 const { assertRejects } = require('./utils.js')
 const TokenOWL = artifacts.require('TokenOWL')
-const ProxyMaster = artifacts.require('ProxyMaster')
 const TokenOWLProxy = artifacts.require('TokenOWLProxy')
+const OWLAirdrop = artifacts.require('OWLAirdrop')
 
 contract('TokenOWL', accounts => {
   const [creator, minter, altMinter, OWLHolder, notOWLHolder, notApprover, contractConsumingOWL, newOwner] = accounts
   let tokenOWL
+  let owlAirdrop
 
   before(async () => {
     const ProxyMasterContract = await TokenOWLProxy.deployed()
     tokenOWL = TokenOWL.at(ProxyMasterContract.address)
+    owlAirdrop = await OWLAirdrop.deployed()
   })
 
   it('allows only the creator to set the minter', async () => {
     assert.equal(await tokenOWL.creator.call(), creator)
-    assert.equal(await tokenOWL.minter.call(), 0)
+    assert.equal(await tokenOWL.minter.call(), owlAirdrop.address)
 
     await tokenOWL.setMinter(minter, { from: creator })
     assert.equal(await tokenOWL.minter.call(), minter)
@@ -25,13 +27,14 @@ contract('TokenOWL', accounts => {
   })
 
   it('allows only the creator/owner to change the owner', async () => {
+    const newOwner = altMinter;
     assert.equal(await tokenOWL.creator.call(), creator)
 
     await tokenOWL.setNewOwner(newOwner, { from: creator })
     assert.equal(await tokenOWL.creator.call(), newOwner)
-
+ 
     for (let other of [minter, OWLHolder, notOWLHolder]) {
-      await assertRejects(tokenOWL.setMinter(minter, { from: other }))
+      await assertRejects(tokenOWL.setNewOwner(minter, { from: other }))
     }
 
     await tokenOWL.setNewOwner(creator, { from: newOwner })
