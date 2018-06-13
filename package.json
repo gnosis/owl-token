@@ -15,7 +15,7 @@
     "networks": "truffle networks",
     "compile-todo": "eslint --fix . && eslint . && truffle compile",
     "compile": "truffle compile",
-    "restore": "npm run compile --all && npm run networks-reset",
+    "restore": "truffle compile --all && npm run networks-reset",
     "migrate": "truffle migrate",
     "lint": "eslint ."
   },
