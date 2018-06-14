@@ -6,7 +6,7 @@ function migrate ({
   network,
   accounts,
   web3,
-  gnoLockEndTime = _getDefaultLockEndTime()
+  gnoLockEndTime = _getDefaultLockEndTime(web3)
 }) {
   const TokenOWL = artifacts.require('TokenOWL')
   const TokenOWLProxy = artifacts.require('TokenOWLProxy')
@@ -28,12 +28,13 @@ function migrate ({
       console.log('\t OWL proxy address: %s', owlProxyAddress)
       console.log('\t GNO address: %s', gnoAddress)
       console.log('\t End time: %s', gnoLockEndTime)
-
+      const gnoLockEndTimeAdjusted = gnoLockEndTime.getTime() / 1000 > time ? gnoLockEndTime.getTime() : time + GNO_LOCK_PERIOD_IN_HOURS * 60 * 60 * 1000
+      if (gnoLockEndTime.getTime() / 1000 > time) { console.log('Warning gnoLockEndTime was in the past and has been adjusted') }
       return deployer.deploy(
         OWLAirdrop,
         owlProxyAddress,
         gnoAddress,
-        gnoLockEndTime.getTime() / 1000
+        gnoLockEndTimeAdjusted
       )
     })
 }
