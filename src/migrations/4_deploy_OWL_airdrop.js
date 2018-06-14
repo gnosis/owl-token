@@ -6,7 +6,7 @@ function migrate ({
   network,
   accounts,
   web3,
-  gnoLockEndTime = _getDefaultLockEndTime()
+  gnoLockEndTime = _getDefaultLockEndTime(web3)
 }) {
   const TokenOWL = artifacts.require('TokenOWL')
   const TokenOWLProxy = artifacts.require('TokenOWLProxy')
