@@ -6,19 +6,15 @@
   version "0.2.0"
   resolved "https://registry.yarnpkg.com/@digix/tempo/-/tempo-0.2.0.tgz#5daf91ad788d6b596a19aad22e2e667e4ec808a8"
 
-"@gnosis.pm/gno-token@^0.6.0":
-  version "0.6.0"
-  resolved "https://registry.yarnpkg.com/@gnosis.pm/gno-token/-/gno-token-0.6.0.tgz#5b2d4b6dcafebfbf3af813a3f8fbfed7869a7669"
+"@gnosis.pm/gno-token@^1.0.1":
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/@gnosis.pm/gno-token/-/gno-token-1.0.1.tgz#cec451196ec94754a1772bd47b87b3906c9880c3"
   dependencies:
-    "@gnosis.pm/util-contracts" "^0.4.0"
+    "@gnosis.pm/util-contracts" "^1.0.1"
 
-"@gnosis.pm/util-contracts@^0.4.0":
-  version "0.4.0"
-  resolved "https://registry.yarnpkg.com/@gnosis.pm/util-contracts/-/util-contracts-0.4.0.tgz#6b4b3437e75b508c7d03bee316e9d517128854d3"
-
-"@gnosis.pm/util-contracts@^0.5.0":
-  version "0.5.0"
-  resolved "https://registry.yarnpkg.com/@gnosis.pm/util-contracts/-/util-contracts-0.5.0.tgz#4a174e2a86a1d194113d0274085b7887ba8ab93b"
+"@gnosis.pm/util-contracts@^1.0.1":
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/@gnosis.pm/util-contracts/-/util-contracts-1.0.1.tgz#69a5661eb49b35aff9d166ea8089cc7495e2dab6"
 
 abstract-leveldown@~2.6.0:
   version "2.6.3"
