@@ -1,6 +1,6 @@
 {
   "name": "@gnosis.pm/owl-token",
-  "version": "0.16.0",
+  "version": "0.17.0",
   "description": "The OWL token and related smart contracts",
   "main": "index.js",
   "scripts": {
