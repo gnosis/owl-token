@@ -49,7 +49,7 @@ LOCK_END_TIME='2018-06-12T16:00:00+02:00' yarn migrate
 ```bash
 # In a release branch (i.e. release/vX.Y.X)
 # Migrate the version to the testnets, at least rinkeby, and posibly mainnet
-# You can optionally change the gas price using the GAS_PRICE env variable
+# You can optionally change the gas price using the GAS_PRICE_GWEI env variable
 yarn restore
 MNEMONIC=$MNEMONIC_OWL yarn migrate --network rinkeby
 
