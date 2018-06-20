@@ -17,10 +17,9 @@ function migrate ({
     .then(() => Math.deployed())
     .then(() => TokenGNO.deployed())
     .then(() => TokenOWL.deployed())
-    .then(tokenOwl => TokenOWLProxy.deployed())
+    .then(() => TokenOWLProxy.deployed())
     .then(() => deployer.link(Math, [ OWLAirdrop ]))
-    .then(() => _getTime(web3))
-    .then(time => {
+    .then(() => {
       const owlProxyAddress = TokenOWLProxy.address
       const gnoAddress = TokenGNO.address
 
@@ -60,18 +59,6 @@ function _getDependencies (artifacts, network, deployer) {
     Math,
     TokenGNO
   }
-}
-
-function _getTime (web3) {
-  return new Promise((resolve, reject) => {
-    web3.eth.getBlock('latest', (err, block) => {
-      if (err) {
-        return reject(err)
-      } else {
-        resolve(block.timestamp)
-      }
-    })
-  })
 }
 
 module.exports = migrate
