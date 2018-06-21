@@ -39,13 +39,16 @@ yarn migrate
 yarn migrate-all
 ```
 
-## Change the lock period time
+## Change the lock period time - re-deployment
 The deployment script has an environemt variable `LOCK_END_TIME` that 
 allows you to set a different lock period (`30 days` by default).
 
 ```bash
 # Deploy for develop with a given end time for lock period
-LOCK_END_TIME='2018-06-12T16:00:00+02:00' yarn migrate
+# flag --reset is NECESSARY as you are re-deploying
+# 24H format, please be careful!
+LOCK_END_TIME='2018-06-12T16:00:00+02:00' yarn migrate --reset
+(npm) > LOCK_END_TIME='2018-06-12T16:00:00+02:00' npm run migrate -- --reset
 ```
 
 ## Generate a new version
@@ -53,8 +56,10 @@ LOCK_END_TIME='2018-06-12T16:00:00+02:00' yarn migrate
 # In a release branch (i.e. release/vX.Y.X)
 # Migrate the version to the testnets, at least rinkeby, and posibly mainnet
 # You can optionally change the gas price using the GAS_PRICE_GWEI env variable
+# if you are changing LOCK_END_TIME here, flag --reset is NECESSARY as you are re-deploying
 yarn restore
 MNEMONIC=$MNEMONIC_OWL yarn migrate --network rinkeby
+(npm) > MNEMONIC=$MNEMONIC_OWL npm run migrate -- --network rinkeby
 
 # Extract the network file
 yarn networks-extract
@@ -63,14 +68,14 @@ yarn networks-extract
 # Folow the steps in "Verify contract"
 
 # Commit the network file
-git add network.json
-git commit -m 'Update the networks file'
+git add networks.json
+git commit -m 'Updated the networks file'
+> OR simply git commit -am 'Updated networks file'
 
 # Generate version using Semantic Version: https://semver.org/
 # For example, for a minor version
 npm version minor
-git push
-git push --tags
+git push && git push --tags
 
 # Deploy npm package
 npm publish --access=public
