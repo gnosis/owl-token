@@ -100,3 +100,15 @@ Go to Etherscan validation page:
   * Set the exact compiler version used for the compilation i.e. `v0.4.24+commit.e67f0147`
   * Optimization: `No`
 * Press validate
+
+# Change the owner
+There's a script to change the OWL owner:
+
+For example, to change the owner in `rinkeby` to `0xb65d2c1a4756ee857fca057ef561758b42277f5e`:
+```bash
+# Dry run 
+MNEMONIC=$MNEMONIC_OWL yarn change-owner --owner 0xb65d2c1a4756ee857fca057ef561758b42277f5e --network rinkeby --dry-run
+
+# Run the transaction
+MNEMONIC=$MNEMONIC_OWL yarn change-owner --owner 0xb65d2c1a4756ee857fca057ef561758b42277f5e --network rinkeby
+```

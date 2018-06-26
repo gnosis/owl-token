@@ -17,7 +17,8 @@
     "compile": "truffle compile",
     "restore": "truffle compile --all && npm run networks-reset",
     "migrate": "truffle migrate",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "change-owner": "truffle exec src/truffle/changeOwlCreator.js"
   },
   "repository": {
     "type": "git",
@@ -34,8 +35,6 @@
     "@gnosis.pm/util-contracts": "^1.0.1"
   },
   "devDependencies": {
-    "truffle-contract": "^3.0.5",
-    "truffle-hdwallet-provider": "0.0.5",
     "@digix/tempo": "^0.2.0",
     "eslint": "^4.19.1",
     "eslint-config-standard": "^11.0.0",
@@ -43,7 +42,10 @@
     "eslint-plugin-node": "^6.0.0",
     "eslint-plugin-promise": "^3.7.0",
     "eslint-plugin-standard": "^3.1.0",
+    "truffle": "4.1.5",
+    "truffle-contract": "^3.0.5",
     "truffle-flattener": "^1.2.5",
-    "truffle": "4.1.5"
+    "truffle-hdwallet-provider": "0.0.5",
+    "yargs": "^11.0.0"
   }
 }
