@@ -62,8 +62,8 @@ async function changeOwner () {
     console.log(`Change owner, from ${creator} to ${newOwner}`)
 
     // Validations
-    assert.equal(account, creator, 'The account used to run the script must be the current owner of OWL')
     assert(web3.isAddress(newOwner), `The address ${newOwner} is not valid`)
+    assert.equal(account, creator, 'The account used to run the script must be the current owner of OWL')
 
     if (newOwner !== creator) {
       if (dryRun) {
