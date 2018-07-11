@@ -29,9 +29,6 @@ yarn networks
 # Run ganache CLU
 yarn rpc
 
-# Execute the migrations for the dependencies
-yarn migrate-dep
-
 # Execute the migrations
 yarn migrate
 
