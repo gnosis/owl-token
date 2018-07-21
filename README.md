@@ -4,13 +4,13 @@ The OWL token and related smart contracts.
 The token and contract can be in **Etherscan**:
 
 * **Mainnet**: 
-  * TokenOWL: [https://etherscan.io/token/0x694c68c7577a9a6a8cf2f6da0066790201afc260]()
-  * TokenOWLProxy: [https://etherscan.io/token/0x1a5f9352af8af974bfc03399e3767df6370d82e4]()
-  * OWLAirdrop: [https://etherscan.io/token/0x85e9fc8273b1ee9d81f4b800071563096f689863]()
+  * TokenOWL: [https://etherscan.io/token/0x694c68c7577a9a6a8cf2f6da0066790201afc260](https://etherscan.io/token/0x694c68c7577a9a6a8cf2f6da0066790201afc260)
+  * TokenOWLProxy: [https://etherscan.io/token/0x1a5f9352af8af974bfc03399e3767df6370d82e4](https://etherscan.io/token/0x1a5f9352af8af974bfc03399e3767df6370d82e4)
+  * OWLAirdrop: [https://etherscan.io/token/0x85e9fc8273b1ee9d81f4b800071563096f689863](https://etherscan.io/token/0x85e9fc8273b1ee9d81f4b800071563096f689863)
 * **Rinkeby**:
-  * TokenOWL: [https://rinkeby.etherscan.io/token/0xff9874588b2358704832a380ca9892f0a1c57b40]()
-  * TokenOWLProxy: [https://rinkeby.etherscan.io/token/0xa7d1c04faf998f9161fc9f800a99a809b84cfc9d]()
-  * OWLAirdrop: [https://rinkeby.etherscan.io/token/0x9b816eb9fa1af7bc57a4d7ce059ed072d49d7830]()
+  * TokenOWL: [https://rinkeby.etherscan.io/token/0xff9874588b2358704832a380ca9892f0a1c57b40](https://rinkeby.etherscan.io/token/0xff9874588b2358704832a380ca9892f0a1c57b40)
+  * TokenOWLProxy: [https://rinkeby.etherscan.io/token/0xa7d1c04faf998f9161fc9f800a99a809b84cfc9d](https://rinkeby.etherscan.io/token/0xa7d1c04faf998f9161fc9f800a99a809b84cfc9d)
+  * OWLAirdrop: [https://rinkeby.etherscan.io/token/0x9b816eb9fa1af7bc57a4d7ce059ed072d49d7830](https://rinkeby.etherscan.io/token/0x9b816eb9fa1af7bc57a4d7ce059ed072d49d7830)
   
 ## Setup and show the networks
 ```bash
