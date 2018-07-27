@@ -109,3 +109,6 @@ MNEMONIC=$MNEMONIC_OWL yarn change-owner --owner 0xb65d2c1a4756ee857fca057ef5617
 # Run the transaction
 MNEMONIC=$MNEMONIC_OWL yarn change-owner --owner 0xb65d2c1a4756ee857fca057ef561758b42277f5e --network rinkeby
 ```
+
+## License
+[LGPL v3](./LICENSE)
