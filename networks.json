@@ -11,6 +11,12 @@
       "links": {},
       "address": "0xc8e7354a5455b99a0c42c89ee79b4cca1804e957",
       "transactionHash": "0x6d57ee69ad1b36e9d4e4e5032efade4002dc87e3d60dfeb0bfe97abe452df17f"
+    },
+    "42": {
+      "events": {},
+      "links": {},
+      "address": "0x8bdd53a53c53fbc40d38231d6219f8cb7b59a704",
+      "transactionHash": "0x6c4ae0abb0355a44b88d90e13a3359cc7d28215afdd65928a898bca1d228d337"
     }
   },
   "OWLAirdrop": {
@@ -25,6 +31,12 @@
       "links": {},
       "address": "0x9b816eb9fa1af7bc57a4d7ce059ed072d49d7830",
       "transactionHash": "0x8536c711f52087aecab8652493c224a1ecf3edcd28f37d0becd2d71bf8c8f5eb"
+    },
+    "42": {
+      "events": {},
+      "links": {},
+      "address": "0x45ce24c27f2442feb62f62bfb26ab161f07adc71",
+      "transactionHash": "0x19446ad6810cb2c432ed45b0ffaee5cf51555a93fb27b1fe2870a597a90cda67"
     }
   },
   "TokenOWL": {
@@ -39,6 +51,12 @@
       "links": {},
       "address": "0xff9874588b2358704832a380ca9892f0a1c57b40",
       "transactionHash": "0x22e4c99ef5f4ba21d35844d2037f2a472f2f1540f19b1cab8b92c222fd8d8c23"
+    },
+    "42": {
+      "events": {},
+      "links": {},
+      "address": "0xa98fdb77b578f30d5d88b3ebc2600bfe67fa09d1",
+      "transactionHash": "0xd20c4b939bac61ba0d88daab5fe54c38d077a5375d767e93d4e747b3cc65154c"
     }
   },
   "TokenOWLProxy": {
@@ -53,6 +71,12 @@
       "links": {},
       "address": "0xa7d1c04faf998f9161fc9f800a99a809b84cfc9d",
       "transactionHash": "0x3ecdb4349ea6dcc127dc9db6ec0e31193e27aad05986fe87a241d920041e03f8"
+    },
+    "42": {
+      "events": {},
+      "links": {},
+      "address": "0xb6f77a34ff81dd13fa68b5774d74541a61047fe8",
+      "transactionHash": "0x36ae77e6f99b1932ae6b20126a11c91bd8f3daac7a5368ebdf04cd91c0bef77d"
     }
   }
 }
