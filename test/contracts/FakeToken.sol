@@ -2,9 +2,9 @@ pragma solidity ^0.4.21;
 
 
 import "@gnosis.pm/util-contracts/contracts/Math.sol";
-import "@gnosis.pm/util-contracts/contracts/StandardToken.sol";
+import "@gnosis.pm/util-contracts/contracts/GnosisStandardToken.sol";
 
-contract FakeToken is StandardToken {
+contract FakeToken is GnosisStandardToken {
     using Math for *;
 
     string public constant name = "Fake Token";
