@@ -12,7 +12,7 @@ async function migrate ({ artifacts, accounts }) {
   console.log('\t Airdrop address: %s', owlAirdrop.address)
   console.log('\t Owner: %s', owner)
   console.log('\t OWL Proxy address: %s', tokenOwlProxy.address)
-  const owl = TokenOWL.at(tokenOwlProxy.address)
+  const owl = await TokenOWL.at(tokenOwlProxy.address)
   await owl.setMinter(owlAirdrop.address)
 }
 
