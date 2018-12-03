@@ -1,6 +1,6 @@
 {
   "name": "@gnosis.pm/owl-token",
-  "version": "1.2.2",
+  "version": "1.3.0-RC1",
   "description": "The OWL token and related smart contracts",
   "main": "index.js",
   "scripts": {
@@ -31,11 +31,12 @@
   },
   "homepage": "https://github.com/gnosis/owl-token#readme",
   "dependencies": {
-    "@gnosis.pm/gno-token": "^1.2.0-RC1",
-    "@gnosis.pm/util-contracts": "^1.2.0-RC1"
+    "@gnosis.pm/gno-token": "^1.2.0-RC.1",
+    "@gnosis.pm/util-contracts": "^1.2.0-RC.1"
   },
   "devDependencies": {
     "@digix/tempo": "^0.2.0",
+    "dotenv": "^6.1.0",
     "eslint": "^4.19.1",
     "eslint-config-standard": "^11.0.0",
     "eslint-plugin-import": "^2.11.0",
@@ -46,6 +47,7 @@
     "truffle-contract": "^3.0.6",
     "truffle-flattener": "^1.2.5",
     "truffle-hdwallet-provider": "^1.0.0-web3one.1",
+    "web3": "^1.0.0-beta.36",
     "yargs": "^11.0.0"
   }
 }
