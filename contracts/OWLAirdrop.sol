@@ -1,4 +1,4 @@
-pragma solidity ^0.4.25;
+pragma solidity ^0.4.24;
 
 import "@gnosis.pm/gno-token/contracts/TokenGNO.sol";
 import "./TokenOWL.sol";
