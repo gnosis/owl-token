@@ -24,15 +24,14 @@
     "type": "git",
     "url": "https://github.com/gnosis/owl-token.git"
   },
-  "author": "",
-  "license": "LGPL-3",
+  "license": "LGPL-3.0",
   "bugs": {
     "url": "https://github.com/gnosis/owl-token/issues"
   },
   "homepage": "https://github.com/gnosis/owl-token#readme",
   "dependencies": {
     "@gnosis.pm/gno-token": "^1.2.0-RC4",
-    "@gnosis.pm/util-contracts": "^1.2.0-RC4"
+    "@gnosis.pm/util-contracts": "^1.2.0-RC5"
   },
   "devDependencies": {
     "@digix/tempo": "^0.2.0",
@@ -43,10 +42,10 @@
     "eslint-plugin-node": "^6.0.0",
     "eslint-plugin-promise": "^3.7.0",
     "eslint-plugin-standard": "^3.1.0",
-    "truffle": "^5.0.0-beta.2",
+    "truffle": "^4.1.14",
     "truffle-contract": "^3.0.6",
     "truffle-flattener": "^1.2.5",
-    "truffle-hdwallet-provider": "^1.0.0-web3one.1",
+    "truffle-hdwallet-provider": "0.0.6",
     "web3": "^1.0.0-beta.36",
     "yargs": "^11.0.0"
   }
