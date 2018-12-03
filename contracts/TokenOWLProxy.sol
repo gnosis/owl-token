@@ -21,7 +21,7 @@ contract TokenOWLProxy is Proxy, GnosisStandardToken {
     address public minter;
 
     /// @dev Constructor of the contract OWL, which distributes tokens
-    function TokenOWLProxy(address proxied)
+    constructor (address proxied)
         Proxy(proxied)
         public
     {
