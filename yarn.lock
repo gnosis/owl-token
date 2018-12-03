@@ -3448,9 +3448,9 @@ slice-ansi@1.0.0:
   dependencies:
     is-fullwidth-code-point "^2.0.0"
 
-solc@0.4.21:
-  version "0.4.21"
-  resolved "https://registry.yarnpkg.com/solc/-/solc-0.4.21.tgz#6a7ecd505bfa0fc268330d5de6b9ae65c8c68264"
+solc@0.4.25:
+  version "0.4.25"
+  resolved "https://registry.yarnpkg.com/solc/-/solc-0.4.25.tgz#6a7ecd505bfa0fc268330d5de6b9ae65c8c68264"
   integrity sha512-8lJmimVjOG9AJOQRWS2ph4rSctPMsPGZ4H360HLs5iI+euUlt7iAvUxSLeFZZzwk0kas4Qta7HmlMXNU3yYwhw==
   dependencies:
     fs-extra "^0.30.0"
@@ -3828,7 +3828,7 @@ truffle@4.1.5:
   dependencies:
     mocha "^3.4.2"
     original-require "^1.0.1"
-    solc "0.4.21"
+    solc "0.4.25"
 
 tsort@0.0.1:
   version "0.0.1"
