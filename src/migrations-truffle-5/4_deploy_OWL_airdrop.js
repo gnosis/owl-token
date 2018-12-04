@@ -1,6 +1,6 @@
 const GNO_LOCK_PERIOD_IN_HOURS = 30 * 24 // 30 days
 
-async function migrate ({
+async function migrate({
   artifacts,
   deployer,
   network,
@@ -10,13 +10,13 @@ async function migrate ({
   const TokenOWL = artifacts.require('TokenOWL')
   const TokenOWLProxy = artifacts.require('TokenOWLProxy')
   const OWLAirdrop = artifacts.require('OWLAirdrop')
-  const { Math, TokenGNO } = _getDependencies(artifacts, network, deployer)
+  const { Math: MathLib, TokenGNO } = _getDependencies(artifacts, network, deployer)
 
-  await Math.deployed()
+  await MathLib.deployed()
   const tokenGno = await TokenGNO.deployed()
   await TokenOWL.deployed()
   const tokenOWLProxy = await TokenOWLProxy.deployed()
-  await deployer.link(Math, [ OWLAirdrop ])
+  await deployer.link(MathLib, [OWLAirdrop])
 
   const owlProxyAddress = tokenOWLProxy.address
   const gnoAddress = tokenGno.address
@@ -27,7 +27,7 @@ async function migrate ({
   console.log('\t End time: %s', gnoLockEndTime)
 
   const BN = web3.utils.BN
-  const gnoLockEndTimeBN = new BN(gnoLockEndTime.getTime() / 1000)
+  const gnoLockEndTimeBN = new BN(Math.floor(gnoLockEndTime.getTime() / 1000))
   return deployer.deploy(
     OWLAirdrop,
     owlProxyAddress,
@@ -36,12 +36,12 @@ async function migrate ({
   )
 }
 
-function _getDefaultLockEndTime () {
+function _getDefaultLockEndTime() {
   const now = new Date()
   return new Date(now.getTime() + GNO_LOCK_PERIOD_IN_HOURS * 60 * 60 * 1000)
 }
 
-function _getDependencies (artifacts, network, deployer) {
+function _getDependencies(artifacts, network, deployer) {
   let Math, TokenGNO
   if (network === 'development') {
     Math = artifacts.require('Math')
