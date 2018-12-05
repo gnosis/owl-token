@@ -30,7 +30,7 @@ function migrate ({ artifacts, deployer, network, accounts, web3 }) {
         if (!gnoAddress) {
           deployGno(deployParams)
         } else {
-          console.log(`No need to deploy GNO contract. Using: ${gnoAddress}`)
+          console.log(`No need to deploy GNO Token contract. Using: ${gnoAddress}`)
         }
       })
   } else {
