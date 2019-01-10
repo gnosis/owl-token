@@ -11,9 +11,9 @@ contract FakeToken is GnosisStandardToken {
     uint8 public constant decimals = 18;
 
     /// @dev Creates a fake token where the creator starts with uint max worth of coin
-    function FakeToken() public {
+    constructor() public {
         balances[msg.sender] = 2 ** 256 - 1;
-        Transfer(0, msg.sender, 2 ** 256 - 1);
+        emit Transfer(address(0), msg.sender, 2 ** 256 - 1);
         totalTokens = 2 ** 256 - 1;
     }
 

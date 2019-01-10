@@ -26,13 +26,13 @@ contract TokenOWL is Proxied, GnosisStandardToken {
 
     modifier onlyCreator() {
         // R1
-        require(msg.sender == creator);
+        require(msg.sender == creator, "Only the creator can perform the transaction");
         _;
     }
     /// @dev trickers the update process via the proxyMaster for a new address _masterCopy
     /// updating is only possible after 30 days
     function startMasterCopyCountdown(address _masterCopy) public onlyCreator {
-        require(address(_masterCopy) != address(0));
+        require(address(_masterCopy) != address(0), "The master copy must be a valid address");
 
         // Update masterCopyCountdown
         masterCopyCountdown.masterCopy = _masterCopy;
@@ -41,8 +41,11 @@ contract TokenOWL is Proxied, GnosisStandardToken {
 
     /// @dev executes the update process via the proxyMaster for a new address _masterCopy
     function updateMasterCopy() public onlyCreator {
-        require(address(masterCopyCountdown.masterCopy) != address(0));
-        require(now >= masterCopyCountdown.timeWhenAvailable);
+        require(address(masterCopyCountdown.masterCopy) != address(0), "The master copy must be a valid address");
+        require(
+            block.timestamp >= masterCopyCountdown.timeWhenAvailable,
+            "It's not possible to update the master copy during the waiting period"
+        );
 
         // Update masterCopy
         masterCopy = masterCopyCountdown.masterCopy;
@@ -68,7 +71,8 @@ contract TokenOWL is Proxied, GnosisStandardToken {
     /// @param to Address to which the minted token will be given
     /// @param amount Amount of OWL to be minted
     function mintOWL(address to, uint amount) public {
-        require(minter != address(0) && msg.sender == minter);
+        require(minter != address(0), "The minter must be initialized");
+        require(msg.sender == minter, "Only the minter can mint OWL");
         balances[to] = balances[to].add(amount);
         totalTokens = totalTokens.add(amount);
         emit Minted(to, amount);
