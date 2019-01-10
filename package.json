@@ -18,7 +18,8 @@
     "restore": "truffle compile --all && npm run networks-reset",
     "migrate": "truffle migrate",
     "lint": "eslint .",
-    "change-owner": "truffle exec src/truffle/changeOwlCreator.js"
+    "change-owner": "truffle exec src/truffle/changeOwlCreator.js",
+    "prettier": "prettier --write --tab-width 4 --print-width 120 '**/*.sol'"
   },
   "repository": {
     "type": "git",
