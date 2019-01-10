@@ -37,7 +37,7 @@ contract TokenOWL is Proxied, GnosisStandardToken {
         public
         onlyCreator()
     {
-        require(address(_masterCopy) != 0);
+        require(address(_masterCopy) != address(0));
 
         // Update masterCopyCountdown
         masterCopyCountdown.masterCopy = _masterCopy;
@@ -49,7 +49,7 @@ contract TokenOWL is Proxied, GnosisStandardToken {
         public
         onlyCreator()
     {   
-        require(address(masterCopyCountdown.masterCopy) != 0);
+        require(address(masterCopyCountdown.masterCopy) != address(0));
         require(now >= masterCopyCountdown.timeWhenAvailable);
 
         // Update masterCopy
@@ -89,7 +89,7 @@ contract TokenOWL is Proxied, GnosisStandardToken {
     function mintOWL(address to, uint amount)
         public
     {
-        require(minter != 0 && msg.sender == minter);
+        require(minter != address(0) && msg.sender == minter);
         balances[to] = balances[to].add(amount);
         totalTokens = totalTokens.add(amount);
         emit Minted(to, amount);
