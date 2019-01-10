@@ -1,4 +1,4 @@
-pragma solidity ^0.5.0;
+pragma solidity ^0.5.2;
 
 import "@gnosis.pm/gno-token/contracts/TokenGNO.sol";
 import "./TokenOWL.sol";
@@ -26,7 +26,7 @@ contract OWLAirdrop {
     /// @param amount Amount of GNO to lock
     function lockGNO(uint amount) public {
         require(block.timestamp <= endTime, "The locking period has ended");
-        require(tokenGNO.transferFrom(msg.sender, this, amount), "The GNO transfer must succeed");
+        require(tokenGNO.transferFrom(msg.sender, address(this), amount), "The GNO transfer must succeed");
         lockedGNO[msg.sender] = lockedGNO[msg.sender].add(amount);
         tokenOWL.mintOWL(msg.sender, amount.mul(10));
     }
