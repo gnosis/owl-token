@@ -1,5 +1,4 @@
-pragma solidity ^0.4.21;
-
+pragma solidity ^0.4.24;
 
 import "@gnosis.pm/util-contracts/contracts/Math.sol";
 import "@gnosis.pm/util-contracts/contracts/GnosisStandardToken.sol";
@@ -28,7 +27,7 @@ contract TokenOWLUpdateFixture is Proxied, GnosisStandardToken {
 
     modifier onlyCreator() {
         // R1
-        require(msg.sender == creator);
+        require(msg.sender == creator, "Only the creator can do the operation");
         // if (msg.sender != auctioneer) {
         //     Log('onlyAuctioneer R1');
         //     return;
@@ -52,7 +51,7 @@ contract TokenOWLUpdateFixture is Proxied, GnosisStandardToken {
         public
         onlyCreator()
     {
-        require(address(_masterCopy) != 0);
+        require(address(_masterCopy) != 0, "The master copy must be a valid address");
 
         // Update masterCopyCountdown
         masterCopyCountdown.masterCopy = _masterCopy;
@@ -64,8 +63,8 @@ contract TokenOWLUpdateFixture is Proxied, GnosisStandardToken {
         public
         onlyCreator()
     {   
-        require(address(masterCopyCountdown.masterCopy) != 0);
-        require(now >= masterCopyCountdown.timeWhenAvailable);
+        require(address(masterCopyCountdown.masterCopy) != 0, "The master copy must be a valid address");
+        require(now >= masterCopyCountdown.timeWhenAvailable, "The master copy cannot be updated during the waiting period");
 
         // Update masterCopy
         masterCopy = masterCopyCountdown.masterCopy;
@@ -86,10 +85,10 @@ contract TokenOWLUpdateFixture is Proxied, GnosisStandardToken {
     function mintOWL(address to, uint amount)
         public
     {
-        require(minter != 0 && msg.sender == minter);
+        require(minter != 0 && msg.sender == minter, "Only te minter can mint OWL");
         balances[to] = balances[to].add(amount);
         totalTokens = totalTokens.add(amount);
-        Minted(to, amount);
+        emit Minted(to, amount);
     }
 
     /// @dev Burns OWL.
@@ -99,11 +98,12 @@ contract TokenOWLUpdateFixture is Proxied, GnosisStandardToken {
     {
         balances[msg.sender] = balances[msg.sender].sub(amount);
         totalTokens = totalTokens.sub(amount);
-        Burnt(msg.sender, amount);
+        emit Burnt(msg.sender, amount);
     }
 
     function getMasterCopy()
         public
+        view
         returns(address)
     {
         return masterCopy;

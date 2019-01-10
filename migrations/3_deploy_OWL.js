@@ -1,13 +1,14 @@
-/* global artifacts */
+/* global artifacts, web3 */
 /* eslint no-undef: "error" */
 
-const deployOwl = require('../src/migrations/3_deploy_OWL')
+const deployOwl = require('../src/migrations-truffle-5/3_deploy_OWL')
 
 module.exports = function (deployer, network, accounts) {
   return deployOwl({
     artifacts,
     deployer,
     network,
-    accounts
+    accounts,
+    web3
   })
 }

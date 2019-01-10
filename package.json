@@ -1,6 +1,6 @@
 {
   "name": "@gnosis.pm/owl-token",
-  "version": "1.2.3",
+  "version": "1.3.0-RC3",
   "description": "The OWL token and related smart contracts",
   "main": "index.js",
   "scripts": {
@@ -22,7 +22,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/gnosis/owl-token.git"
+    "url": "https://github.com/gnosis/owl-token.git"
   },
   "author": "",
   "license": "LGPL-3.0",
@@ -31,21 +31,23 @@
   },
   "homepage": "https://github.com/gnosis/owl-token#readme",
   "dependencies": {
-    "@gnosis.pm/gno-token": "1.1.2",
-    "@gnosis.pm/util-contracts": "1.1.1"
+    "@gnosis.pm/gno-token": "^1.2.0-RC4",
+    "@gnosis.pm/util-contracts": "^1.2.0-RC4"
   },
   "devDependencies": {
     "@digix/tempo": "^0.2.0",
+    "dotenv": "^6.1.0",
     "eslint": "^4.19.1",
     "eslint-config-standard": "^11.0.0",
     "eslint-plugin-import": "^2.11.0",
     "eslint-plugin-node": "^6.0.0",
     "eslint-plugin-promise": "^3.7.0",
     "eslint-plugin-standard": "^3.1.0",
-    "truffle": "4.1.5",
-    "truffle-contract": "^3.0.5",
+    "truffle": "^5.0.0-beta.2",
+    "truffle-contract": "^3.0.6",
     "truffle-flattener": "^1.2.5",
-    "truffle-hdwallet-provider": "0.0.5",
+    "truffle-hdwallet-provider": "^1.0.0-web3one.1",
+    "web3": "^1.0.0-beta.36",
     "yargs": "^11.0.0"
   }
 }

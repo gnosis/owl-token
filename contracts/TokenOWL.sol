@@ -1,4 +1,4 @@
-pragma solidity ^0.4.21;
+pragma solidity ^0.4.24;
 
 import "@gnosis.pm/util-contracts/contracts/Math.sol";
 import "@gnosis.pm/util-contracts/contracts/GnosisStandardToken.sol";
@@ -26,7 +26,7 @@ contract TokenOWL is Proxied, GnosisStandardToken {
 
     modifier onlyCreator() {
         // R1
-        require(msg.sender == creator);
+        require(msg.sender == creator, "Only the creator can perform the transaction");
         _;
     }
     /// @dev trickers the update process via the proxyMaster for a new address _masterCopy 
@@ -37,7 +37,7 @@ contract TokenOWL is Proxied, GnosisStandardToken {
         public
         onlyCreator()
     {
-        require(address(_masterCopy) != 0);
+        require(address(_masterCopy) != 0, "The master copy must be a valid address");
 
         // Update masterCopyCountdown
         masterCopyCountdown.masterCopy = _masterCopy;
@@ -49,8 +49,8 @@ contract TokenOWL is Proxied, GnosisStandardToken {
         public
         onlyCreator()
     {   
-        require(address(masterCopyCountdown.masterCopy) != 0);
-        require(now >= masterCopyCountdown.timeWhenAvailable);
+        require(address(masterCopyCountdown.masterCopy) != 0, "The master copy must be a valid address");
+        require(block.timestamp >= masterCopyCountdown.timeWhenAvailable, "It's not possible to update the master copy during the waiting period");
 
         // Update masterCopy
         masterCopy = masterCopyCountdown.masterCopy;
@@ -89,7 +89,8 @@ contract TokenOWL is Proxied, GnosisStandardToken {
     function mintOWL(address to, uint amount)
         public
     {
-        require(minter != 0 && msg.sender == minter);
+        require(minter != 0, "The minter must be initialized");
+        require(msg.sender == minter, "Only the minter can mint OWL");
         balances[to] = balances[to].add(amount);
         totalTokens = totalTokens.add(amount);
         emit Minted(to, amount);

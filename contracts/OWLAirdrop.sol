@@ -1,4 +1,4 @@
-pragma solidity ^0.4.21;
+pragma solidity ^0.4.24;
 
 import "@gnosis.pm/gno-token/contracts/TokenGNO.sol";
 import "./TokenOWL.sol";
@@ -15,10 +15,10 @@ contract OWLAirdrop {
     /// @param _tokenOWL The OWL token contract
     /// @param _tokenGNO The GNO token contract
     /// @param _endTime The unix epoch timestamp in seconds of the time airdrop ends
-    function OWLAirdrop(TokenOWL _tokenOWL, TokenGNO _tokenGNO, uint _endTime)
+    constructor (TokenOWL _tokenOWL, TokenGNO _tokenGNO, uint _endTime)
         public
     {
-        require(now <= _endTime);
+        require(block.timestamp <= _endTime, "The end time cannot be in the past");
         tokenOWL = _tokenOWL;
         tokenGNO = _tokenGNO;
         endTime = _endTime;
@@ -29,7 +29,8 @@ contract OWLAirdrop {
     function lockGNO(uint amount)
         public
     {
-        require(now <= endTime && tokenGNO.transferFrom(msg.sender, this, amount));
+        require(block.timestamp <= endTime, "The locking period has ended");
+        require(tokenGNO.transferFrom(msg.sender, this, amount), "The GNO transfer must succeed");
         lockedGNO[msg.sender] = lockedGNO[msg.sender].add(amount);
         tokenOWL.mintOWL(msg.sender, amount.mul(10));
     }
@@ -38,7 +39,8 @@ contract OWLAirdrop {
     function withdrawGNO()
         public
     {
-        require(now > endTime && tokenGNO.transfer(msg.sender, lockedGNO[msg.sender]));
+        require(block.timestamp > endTime, "It's not allowed to withdraw during the locking time");
+        require(tokenGNO.transfer(msg.sender, lockedGNO[msg.sender]), "The GNO withdrawal must succeed");
         lockedGNO[msg.sender] = 0;
     }
 }

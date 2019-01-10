@@ -4,6 +4,7 @@ async function migrate({
   artifacts,
   deployer,
   network,
+  web3,
   gnoLockEndTime = _getDefaultLockEndTime()
 }) {
   const TokenOWL = artifacts.require('TokenOWL')
@@ -24,11 +25,14 @@ async function migrate({
   console.log('\t OWL proxy address: %s', owlProxyAddress)
   console.log('\t GNO address: %s', gnoAddress)
   console.log('\t End time: %s', gnoLockEndTime)
+
+  const BN = web3.utils.BN
+  const gnoLockEndTimeBN = new BN(gnoLockEndTime.getTime() / 1000)
   return deployer.deploy(
     OWLAirdrop,
     owlProxyAddress,
     gnoAddress,
-    Math.floor(gnoLockEndTime.getTime() / 1000)
+    gnoLockEndTimeBN
   )
 }
 

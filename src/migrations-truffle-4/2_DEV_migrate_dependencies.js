@@ -1,6 +1,6 @@
-async function migrate ({ artifacts, deployer, network, accounts, web3 }) {
-  const deployUtils = require('@gnosis.pm/util-contracts/src/migrations-truffle-1.5')
-  const deployGno = require('@gnosis.pm/gno-token/src/migrations-truffle-1.5')
+function migrate ({ artifacts, deployer, network, accounts, web3 }) {
+  const deployMath = require('@gnosis.pm/util-contracts/src/migrations-truffle-4')
+  const deployGno = require('@gnosis.pm/gno-token/src/migrations-truffle-4')
 
   if (network === 'development') {
     const deployParams = {
@@ -11,9 +11,9 @@ async function migrate ({ artifacts, deployer, network, accounts, web3 }) {
       web3,
       initialTokenAmount: process.env.DEV_GNO_TOKEN_AMOUNT
     }
-
-    await deployUtils(deployParams)
-    await deployGno(deployParams)
+    deployer
+      .then(() => deployMath(deployParams))
+      .then(() => deployGno(deployParams))
   } else {
     console.log('Not in development, so nothing to do. Current network is %s', network)
   }
