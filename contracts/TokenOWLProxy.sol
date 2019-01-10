@@ -1,4 +1,4 @@
-pragma solidity ^0.4.21;
+pragma solidity ^0.5.0;
 
 import "@gnosis.pm/util-contracts/contracts/GnosisStandardToken.sol";
 import "@gnosis.pm/util-contracts/contracts/Proxy.sol";
@@ -21,10 +21,7 @@ contract TokenOWLProxy is Proxy, GnosisStandardToken {
     address public minter;
 
     /// @dev Constructor of the contract OWL, which distributes tokens
-    function TokenOWLProxy(address proxied)
-        Proxy(proxied)
-        public
-    {
+    function TokenOWLProxy(address proxied) public Proxy(proxied) {
         creator = msg.sender;
     }
 }
