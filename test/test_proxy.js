@@ -1,5 +1,4 @@
-
-const { wait } = require('@digix/tempo')(web3)
+const { time } = require('openzeppelin-test-helpers')
 const { assertRejects } = require('./utils.js')
 const MathLib = artifacts.require('Math')
 const TokenOWL = artifacts.require('TokenOWL')
@@ -8,16 +7,14 @@ const TokenOWLProxy = artifacts.require('TokenOWLProxy')
 
 // Test VARS
 let tokenOWL, tokenOWLNew
-let pr
-let airDrop
 
 contract('TokenOWL - Proxy', accounts => {
-  const [ master, notMaster, minter] = accounts
+  const [ master, notMaster, minter ] = accounts
 
   before(async () => {
     await TokenOWLUpdateFixture.link(MathLib)
     const ProxyMasterContract = await TokenOWLProxy.deployed()
-    tokenOWL = TokenOWL.at(ProxyMasterContract.address)
+    tokenOWL = await TokenOWL.at(ProxyMasterContract.address)
     // a new deployed TokenOWL to replace the old with
     tokenOWLNew = await TokenOWLUpdateFixture.new()
   })
@@ -63,7 +60,7 @@ contract('TokenOWL - Proxy', accounts => {
   })
 
   it('not creator can\'t update masterCopy', async () => {
-    await wait(60 * 60 * 24 * 30)
+    await time.increase(60 * 60 * 24 * 30)
     await assertIsNotCreator(notMaster)
     await assertRejects(tokenOWL.updateMasterCopy({ from: notMaster }), 'should reject as caller isn\'t the creator')
   })
@@ -72,7 +69,7 @@ contract('TokenOWL - Proxy', accounts => {
     await assertIsCreator(master)
     await tokenOWL.setMinter(minter)
     const ans = await tokenOWL.updateMasterCopy({ from: master })
-    tokenOWL = TokenOWLUpdateFixture.at(TokenOWLProxy.address)
+    tokenOWL = await TokenOWLUpdateFixture.at(TokenOWLProxy.address)
 
     // testing that old variables are still available
     const param2 = await tokenOWL.minter.call()
