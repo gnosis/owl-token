@@ -1,4 +1,4 @@
-const MathLib = artifacts.require('Math')
+const MathLib = artifacts.require('GnosisMath')
 const FakeToken = artifacts.require('FakeToken')
 
 module.exports = function (deployer) {

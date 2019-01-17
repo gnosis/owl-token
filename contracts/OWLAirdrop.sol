@@ -4,7 +4,7 @@ import "@gnosis.pm/gno-token/contracts/TokenGNO.sol";
 import "./TokenOWL.sol";
 
 contract OWLAirdrop {
-    using Math for *;
+    using GnosisMath for *;
 
     TokenOWL public tokenOWL;
     TokenGNO public tokenGNO;

@@ -4,7 +4,7 @@ import "@gnosis.pm/util-contracts/contracts/GnosisStandardToken.sol";
 import "@gnosis.pm/util-contracts/contracts/Proxy.sol";
 
 contract TokenOWLProxy is Proxy, GnosisStandardToken {
-    using Math for *;
+    using GnosisMath for *;
 
     string public constant name = "OWL Token";
     string public constant symbol = "OWL";
