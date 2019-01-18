@@ -18,7 +18,7 @@ async function migrate ({ artifacts, deployer, network, accounts, web3 }) {
 function _getDependencies (artifacts, network, deployer) {
   let Math
   if (network === 'development') {
-    Math = artifacts.require('Math')
+    Math = artifacts.require('GnosisMath')
   } else {
     const contract = require('truffle-contract')
     Math = contract(require('@gnosis.pm/util-contracts/build/contracts/Math'))

@@ -45,7 +45,7 @@ function _getDefaultLockEndTime () {
 function _getDependencies (artifacts, network, deployer) {
   let Math, TokenGNO
   if (network === 'development') {
-    Math = artifacts.require('Math')
+    Math = artifacts.require('GnosisMath')
     TokenGNO = artifacts.require('TokenGNO')
   } else {
     const contract = require('truffle-contract')

@@ -4,7 +4,7 @@ import "@gnosis.pm/util-contracts/contracts/Math.sol";
 import "@gnosis.pm/util-contracts/contracts/GnosisStandardToken.sol";
 
 contract FakeToken is GnosisStandardToken {
-    using Math for *;
+    using GnosisMath for *;
 
     string public constant name = "Fake Token";
     string public constant symbol = "FAKE";

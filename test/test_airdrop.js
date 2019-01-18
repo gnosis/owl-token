@@ -1,7 +1,7 @@
 const { fromWei } = web3.utils
 const { time, ether } = require('openzeppelin-test-helpers')
 const { assertRejects } = require('./utils.js')
-const MathLib = artifacts.require('Math')
+const MathLib = artifacts.require('GnosisMath')
 const TokenOWL = artifacts.require('TokenOWL')
 const TokenOWLProxy = artifacts.require('TokenOWLProxy')
 const FakeToken = artifacts.require('FakeToken')
