@@ -32,26 +32,26 @@
   },
   "homepage": "https://github.com/gnosis/owl-token#readme",
   "dependencies": {
-    "@gnosis.pm/gno-token": "^2.0.0-RC1",
-    "@gnosis.pm/util-contracts": "^2.0.0-RC1"
+    "@gnosis.pm/gno-token": "^2.0.0-RC3",
+    "@gnosis.pm/util-contracts": "^2.0.0-RC2"
   },
   "devDependencies": {
-    "dotenv": "^6.1.0",
+    "dotenv": "^6.2.0",
     "eslint": "^5.12.0",
     "eslint-config-standard": "^12.0.0",
     "eslint-plugin-import": "^2.14.0",
     "eslint-plugin-node": "^8.0.1",
     "eslint-plugin-promise": "^4.0.1",
     "eslint-plugin-standard": "^4.0.0",
-    "openzeppelin-test-helpers": "^0.1.1",
+    "openzeppelin-test-helpers": "^0.1.2",
     "prettier": "^1.15.3",
     "prettier-plugin-solidity-refactor": "^1.0.0-alpha.12",
     "solc": "0.5.2",
     "truffle": "^5.0.2",
     "truffle-contract": "^3.0.6",
     "truffle-flattener": "^1.2.5",
-    "truffle-hdwallet-provider": "^1.0.0-web3one.1",
-    "web3": "^1.0.0-beta.36",
+    "truffle-hdwallet-provider": "^1.0.2",
+    "web3": "^1.0.0-beta.37",
     "yargs": "^11.0.0"
   }
 }
