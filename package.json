@@ -32,8 +32,8 @@
   },
   "homepage": "https://github.com/gnosis/owl-token#readme",
   "dependencies": {
-    "@gnosis.pm/gno-token": "^2.0.0-RC4",
-    "@gnosis.pm/util-contracts": "^2.0.0-RC5"
+    "@gnosis.pm/gno-token": "^2.0.0",
+    "@gnosis.pm/util-contracts": "^2.0.0"
   },
   "devDependencies": {
     "dotenv": "^6.2.0",
