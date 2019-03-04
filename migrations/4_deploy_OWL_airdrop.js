@@ -22,6 +22,7 @@ module.exports = function (deployer, network, accounts) {
     network,
     accounts,
     web3,
-    gnoLockEndTime
+    gnoLockEndTime,
+    multiplier: process.env.MULT
   })
 }
