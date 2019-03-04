@@ -1,3 +1,5 @@
+/* global artifacts, contract, assert */
+
 const { time } = require('openzeppelin-test-helpers')
 const { assertRejects } = require('./utils.js')
 const TokenOWL = artifacts.require('TokenOWL')
@@ -66,7 +68,7 @@ contract('TokenOWL - Proxy', accounts => {
   it('creator can update masterCopy after time limit', async () => {
     await assertIsCreator(master)
     await tokenOWL.setMinter(minter)
-    const ans = await tokenOWL.updateMasterCopy({ from: master })
+    await tokenOWL.updateMasterCopy({ from: master })
     tokenOWL = await TokenOWLUpdateFixture.at(TokenOWLProxy.address)
 
     // testing that old variables are still available
