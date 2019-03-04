@@ -11,14 +11,12 @@ function migrate ({
   const TokenOWL = artifacts.require('TokenOWL')
   const TokenOWLProxy = artifacts.require('TokenOWLProxy')
   const OWLAirdrop = artifacts.require('OWLAirdrop')
-  const { Math, TokenGNO } = _getDependencies(artifacts, network, deployer)
+  const { TokenGNO } = _getDependencies(artifacts, network, deployer)
 
   return deployer
-    .then(() => Math.deployed())
     .then(() => TokenGNO.deployed())
     .then(() => TokenOWL.deployed())
     .then(() => TokenOWLProxy.deployed())
-    .then(() => deployer.link(Math, [ OWLAirdrop ]))
     .then(() => {
       const owlProxyAddress = TokenOWLProxy.address
       const gnoAddress = TokenGNO.address
@@ -43,20 +41,17 @@ function _getDefaultLockEndTime () {
 }
 
 function _getDependencies (artifacts, network, deployer) {
-  let Math, TokenGNO
+  let TokenGNO
   if (network === 'development') {
-    Math = artifacts.require('GnosisMath')
     TokenGNO = artifacts.require('TokenGNO')
   } else {
     const contract = require('truffle-contract')
-    Math = contract(require('@gnosis.pm/util-contracts/build/contracts/Math'))
     Math.setProvider(deployer.provider)
     TokenGNO = contract(require('@gnosis.pm/gno-token/build/contracts/TokenGNO'))
     TokenGNO.setProvider(deployer.provider)
   }
 
   return {
-    Math,
     TokenGNO
   }
 }
