@@ -1,5 +1,5 @@
 const GNO_LOCK_PERIOD_IN_HOURS = 30 * 24 // 30 days
-const OWL_MULTIPLIER = 2
+const OWL_PER_GNO = 2
 
 function migrate ({
   artifacts,
@@ -8,7 +8,7 @@ function migrate ({
   accounts,
   web3,
   gnoLockEndTime = _getDefaultLockEndTime(),
-  multiplier = OWL_MULTIPLIER
+  multiplier = OWL_PER_GNO
 }) {
   const TokenOWL = artifacts.require('TokenOWL')
   const TokenOWLProxy = artifacts.require('TokenOWLProxy')

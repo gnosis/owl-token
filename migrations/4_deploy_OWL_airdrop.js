@@ -15,6 +15,8 @@ if (process.env.LOCK_END_TIME) {
   `)
 }
 
+if (!process.env.OWL_PER_GNO) throw new Error('OWL_PER_GNO environment variable is not specified')
+
 module.exports = function (deployer, network, accounts) {
   return deployAirdrop({
     artifacts,
