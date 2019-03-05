@@ -25,6 +25,6 @@ module.exports = function (deployer, network, accounts) {
     accounts,
     web3,
     gnoLockEndTime,
-    multiplier: process.env.MULT
+    multiplier: process.env.OWL_PER_GNO
   })
 }
