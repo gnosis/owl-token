@@ -12,7 +12,7 @@ async function migrate ({
   const TokenOWL = artifacts.require('TokenOWL')
   const TokenOWLProxy = artifacts.require('TokenOWLProxy')
   const OWLAirdrop = artifacts.require('OWLAirdrop')
-  const { Math: MathLib, TokenGNO } = _getDependencies(artifacts, network, deployer)
+  const { Math: MathLib, TokenGNO } = await _getDependencies(artifacts, network, deployer, web3)
 
   await MathLib.deployed()
   const tokenGno = await TokenGNO.deployed()
@@ -45,17 +45,23 @@ function _getDefaultLockEndTime () {
   return new Date(now.getTime() + GNO_LOCK_PERIOD_IN_HOURS * 60 * 60 * 1000)
 }
 
-function _getDependencies (artifacts, network, deployer) {
+async function _getDependencies (artifacts, network, deployer, web3) {
   let Math, TokenGNO
   if (network === 'development') {
     Math = artifacts.require('GnosisMath')
     TokenGNO = artifacts.require('TokenGNO')
   } else {
     const contract = require('truffle-contract')
-    Math = contract(require('@gnosis.pm/util-contracts/build/contracts/Math'))
+    Math = contract(require('@gnosis.pm/util-contracts/build/contracts/GnosisMath'))
     Math.setProvider(deployer.provider)
+
+    const networkId = await web3.eth.net.getId()
+
+    Math.setNetwork(networkId)
+
     TokenGNO = contract(require('@gnosis.pm/gno-token/build/contracts/TokenGNO'))
     TokenGNO.setProvider(deployer.provider)
+    TokenGNO.setNetwork(networkId)
   }
 
   return {
