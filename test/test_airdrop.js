@@ -13,6 +13,7 @@ contract('OWLAirdrop', accounts => {
   const [creator, holder] = accounts
   const duration = 100
   let fakeGNO, tokenOWL, owlAirdrop, startTime, endTime
+  const OWL_MULTIPLIER = 10
 
   before(async () => {
     fakeGNO = await FakeToken.new()
@@ -28,7 +29,7 @@ contract('OWLAirdrop', accounts => {
   })
 
   it('can make airdrop with good endTime', async () => {
-    owlAirdrop = await OWLAirdrop.new(tokenOWL.address, fakeGNO.address, endTime, { from: creator })
+    owlAirdrop = await OWLAirdrop.new(tokenOWL.address, fakeGNO.address, endTime, OWL_MULTIPLIER, { from: creator })
     assert.notEqual(owlAirdrop, 0)
   })
 
