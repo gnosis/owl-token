@@ -1,7 +1,7 @@
 async function migrate ({ artifacts, deployer, network, accounts, web3 }) {
   const TokenOWL = artifacts.require('TokenOWL')
   const TokenOWLProxy = artifacts.require('TokenOWLProxy')
-  const { Math } = _getDependencies(artifacts, network, deployer)
+  const { Math } = await _getDependencies(artifacts, network, deployer, web3)
 
   console.log('Link Math lib to TokenOWL and TokenOWLProxy')
   await Math.deployed()
@@ -15,14 +15,17 @@ async function migrate ({ artifacts, deployer, network, accounts, web3 }) {
   await deployer.deploy(TokenOWLProxy, tokenOWL.address)
 }
 
-function _getDependencies (artifacts, network, deployer) {
+async function _getDependencies (artifacts, network, deployer, web3) {
   let Math
   if (network === 'development') {
     Math = artifacts.require('GnosisMath')
   } else {
     const contract = require('truffle-contract')
-    Math = contract(require('@gnosis.pm/util-contracts/build/contracts/Math'))
-    Math.setProvider(deployer.provider)
+    Math = contract(require('@gnosis.pm/util-contracts/build/contracts/GnosisMath'))
+    Math.setProvider(web3.currentProvider)
+
+    // await Math.detectNetwork() should work but doesn't
+    Math.setNetwork(await web3.eth.net.getId())
   }
 
   return {
