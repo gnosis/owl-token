@@ -13,9 +13,12 @@ module.exports = async function (deployer, network, accounts) {
   }
 
   // mainnet-fork is mainnet in --dry-run
-  if (!canSetMinter && (network === 'mainnet' || network === 'mainnet-fork')) {
+  if (!canSetMinter && (
+    network === 'mainnet' || network === 'mainnet-fork' ||
+    network === 'rinkeby' || network === 'rinkeby-fork'
+  )) {
     console.log('Deploying account can\'t change TokenOWL minter')
-    console.log('As network is mainnet, change TokenOWL minter separately afterwards')
+    console.log(`As network is ${network}, change TokenOWL minter separately afterwards`)
     return
   }
 
