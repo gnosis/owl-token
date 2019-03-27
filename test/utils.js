@@ -1,5 +1,8 @@
+/* global assert */
+
 const assertRejects = async (q, msg) => {
-  let res, catchFlag = false
+  let res
+  let catchFlag = false
   try {
     res = await q
     // checks if there was a Log event and its argument l contains string "R<number>"

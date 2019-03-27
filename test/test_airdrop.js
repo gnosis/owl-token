@@ -1,3 +1,5 @@
+/* global artifacts, web3, contract, assert */
+
 const { fromWei } = web3.utils
 const { time, ether } = require('openzeppelin-test-helpers')
 const { assertRejects } = require('./utils.js')
@@ -13,7 +15,7 @@ contract('OWLAirdrop', accounts => {
   const [creator, holder] = accounts
   const duration = 100
   let fakeGNO, tokenOWL, owlAirdrop, startTime, endTime
-  const OWL_MULTIPLIER = 10
+  const OWL_MULTIPLIER = process.env.OWL_PER_GNO || 10
 
   before(async () => {
     fakeGNO = await FakeToken.new()
@@ -39,14 +41,14 @@ contract('OWLAirdrop', accounts => {
     await assertRejects(owlAirdrop.lockGNO(ether('0.5'), { from: holder }))
   })
 
-  it('can lock GNO and mint 10x OWL tokens once authorized to mint', async () => {
+  it(`can lock GNO and mint ${OWL_MULTIPLIER}x OWL tokens once authorized to mint`, async () => {
     await tokenOWL.setMinter(owlAirdrop.address, { from: creator })
     assert.equal((await fakeGNO.allowance.call(holder, owlAirdrop.address)), 5e17)
     const initialGNOBalance = await fakeGNO.balanceOf.call(holder)
     await owlAirdrop.lockGNO(ether('0.5'), { from: holder })
     assert.equal(fromWei(await fakeGNO.balanceOf.call(holder)), fromWei(initialGNOBalance.sub(ether('0.5'))))
     assert.equal((await owlAirdrop.lockedGNO.call(holder)), 5e17)
-    assert.equal((await tokenOWL.balanceOf.call(holder)), 5e18)
+    assert.equal((await tokenOWL.balanceOf.call(holder)), 5e17 * OWL_MULTIPLIER)
   })
 
   it('can continue locking GNO to mint more OWL', async () => {
@@ -55,7 +57,7 @@ contract('OWLAirdrop', accounts => {
     await owlAirdrop.lockGNO(ether('1.5'), { from: holder })
     assert.equal(fromWei(await fakeGNO.balanceOf.call(holder)), fromWei(initialGNOBalance.sub(ether('1.5'))))
     assert.equal((await owlAirdrop.lockedGNO.call(holder)), 2e18)
-    assert.equal((await tokenOWL.balanceOf.call(holder)), 2e19)
+    assert.equal((await tokenOWL.balanceOf.call(holder)), 2e18 * OWL_MULTIPLIER)
   })
 
   it('can not withdraw GNO while airdrop has not ended', async () => {

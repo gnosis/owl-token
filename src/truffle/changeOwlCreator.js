@@ -2,7 +2,7 @@
 /* eslint no-undef: "error" */
 
 const assert = require('assert')
-//const _web3 = require('web3')
+// const _web3 = require('web3')
 
 const GAS = 5e5 // 500K
 const DEFAULT_GAS_PRICE_GWEI = 5
@@ -33,7 +33,7 @@ var argv = require('yargs')
     type: 'boolean',
     default: false,
     describe: 'Dry run. Do not add the token pair, do just the validations.'
-  })  
+  })
   .help('h')
   .strict()
   .argv
@@ -63,7 +63,7 @@ async function changeOwner () {
 
     // Validations
     assert(web3.isAddress(newOwner), `The address ${newOwner} is not valid`)
-    assert.equal(account, creator, 'The account used to run the script must be the current owner of OWL')
+    assert.strictEqual(account, creator, 'The account used to run the script must be the current owner of OWL')
 
     if (newOwner !== creator) {
       if (dryRun) {

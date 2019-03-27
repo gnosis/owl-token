@@ -1,3 +1,5 @@
+/* global artifacts */
+
 const MathLib = artifacts.require('GnosisMath')
 const FakeToken = artifacts.require('FakeToken')
 
