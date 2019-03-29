@@ -1,7 +1,6 @@
-const MathLib = artifacts.require('GnosisMath')
+/* global artifacts */
 const FakeToken = artifacts.require('FakeToken')
 
 module.exports = function (deployer) {
-  deployer.link(MathLib, FakeToken)
   deployer.deploy(FakeToken)
 }

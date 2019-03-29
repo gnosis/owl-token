@@ -1,3 +1,5 @@
+/* global artifacts, web3, contract, assert */
+
 const { assertRejects } = require('./utils.js')
 const { toWei } = web3.utils
 const { BN, ether } = require('openzeppelin-test-helpers')
@@ -6,7 +8,7 @@ const TokenOWLProxy = artifacts.require('TokenOWLProxy')
 const OWLAirdrop = artifacts.require('OWLAirdrop')
 
 contract('TokenOWL', accounts => {
-  const [creator, minter, altMinter, OWLHolder, notOWLHolder, notApprover, contractConsumingOWL, newOwner] = accounts
+  const [creator, minter, altMinter, OWLHolder, notOWLHolder,, contractConsumingOWL] = accounts
   let tokenOWL
   let owlAirdrop
 
@@ -29,7 +31,7 @@ contract('TokenOWL', accounts => {
   })
 
   it('allows only the creator/owner to change the owner', async () => {
-    const newOwner = altMinter;
+    const newOwner = altMinter
     assert.equal(await tokenOWL.creator.call(), creator)
 
     await tokenOWL.setNewOwner(newOwner, { from: creator })
