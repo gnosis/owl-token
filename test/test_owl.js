@@ -8,7 +8,8 @@ const TokenOWLProxy = artifacts.require('TokenOWLProxy')
 const OWLAirdrop = artifacts.require('OWLAirdrop')
 
 contract('TokenOWL', accounts => {
-  const [creator, minter, altMinter, OWLHolder, notOWLHolder, , contractConsumingOWL] = accounts
+  const [creator, minter, altMinter, OWLHolder, notOWLHolder,, contractConsumingOWL] = accounts
+
   let tokenOWL
   let owlAirdrop
 
