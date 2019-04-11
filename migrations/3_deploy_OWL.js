@@ -5,6 +5,17 @@ const deployOwl = require('../src/migrations-truffle-5/3_deploy_OWL')
 const canSetMinterCheck = require('../src/utils/can_set_minter')
 
 module.exports = async function (deployer, network, accounts) {
+  if (process.env.DEPLOY_OWL_ONLY || process.env.DEPLOY_OWL) {
+    console.log('Deploying a new TokenOWl')
+    return deployOwl({
+      artifacts,
+      deployer,
+      network,
+      accounts,
+      web3
+    })
+  }
+
   const canSetMinter = await canSetMinterCheck({ artifacts, accounts })
 
   if (canSetMinter) {

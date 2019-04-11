@@ -5,6 +5,11 @@ const setMinter = require('../src/migrations-truffle-5/5_set_airdrop_as_OWL_mint
 const canSetMinterCheck = require('../src/utils/can_set_minter')
 
 module.exports = async function (deployer, network, accounts) {
+  if (process.env.DEPLOY_OWL_ONLY) {
+    console.log('Only deploying TokenOWL in this run')
+    return
+  }
+
   const canSetMinter = await canSetMinterCheck({ artifacts, accounts })
 
   // mainnet-fork is mainnet in --dry-run
