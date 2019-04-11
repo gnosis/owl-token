@@ -8,7 +8,7 @@ const TokenOWLProxy = artifacts.require('TokenOWLProxy')
 const OWLAirdrop = artifacts.require('OWLAirdrop')
 
 contract('TokenOWL', accounts => {
-  const [creator, minter, altMinter, OWLHolder, notOWLHolder, , contractConsumingOWL] = accounts
+  const [creator, minter, altMinter, OWLHolder, OWLHolder2, notOWLHolder, notApprover, contractConsumingOWL, newOwner] = accounts
   let tokenOWL
   let owlAirdrop
 
@@ -60,6 +60,16 @@ contract('TokenOWL', accounts => {
       }
     })
 
+    it('emits a Transfer from address 0 event during a mint', async () => {
+      const mintTx = await tokenOWL.mintOWL(OWLHolder2, ether('1'), { from: minter })
+
+      const transferLog = mintTx.logs.find(({ event }) => event === 'Transfer')
+      assert(transferLog, 'could not found a log of the Transfer event')
+      assert.equal(transferLog.args.from, '0x0000000000000000000000000000000000000000')
+      assert.equal(transferLog.args.to, OWLHolder2)
+      assert.equal(transferLog.args.value.valueOf(), 1e18)
+    })
+
     it('revokes minting privileges for old minter upon setting new minter', async () => {
       assert.equal(await tokenOWL.minter.call(), minter)
       await tokenOWL.setMinter(altMinter, { from: creator })
@@ -77,6 +87,7 @@ contract('TokenOWL', accounts => {
     before(async () => {
       await tokenOWL.setMinter(minter, { from: creator })
       await tokenOWL.mintOWL(OWLHolder, ether('1'), { from: minter })
+      await tokenOWL.mintOWL(OWLHolder2, ether('1'), { from: minter })
     })
 
     it('check that burning is not working, if allowance is not enough', async () => {
@@ -105,6 +116,16 @@ contract('TokenOWL', accounts => {
 
       assert.equal(balanceBefore - 10 ** 18, (await tokenOWL.balanceOf.call(OWLHolder)), 'balance not updated correctly')
       assert.equal(allowanceBefore - 10 ** 18, (await tokenOWL.allowance.call(OWLHolder, contractConsumingOWL)), 'allowance was not changed correctly')
+    })
+
+    it('emits a Transfer to address 0 event during a burn', async () => {
+      await tokenOWL.approve(minter, ether('1'), { from: OWLHolder2 })
+      const burnTx = await tokenOWL.burnOWL(OWLHolder2, ether('1'), { from: minter })
+      const transferLog = burnTx.logs.find(({ event }) => event === 'Transfer')
+      assert(transferLog, 'could not found a log of the Transfer event')
+      assert.equal(transferLog.args.from, OWLHolder2)
+      assert.equal(transferLog.args.to, '0x0000000000000000000000000000000000000000')
+      assert.equal(transferLog.args.value.valueOf(), 1e18)
     })
   })
 })

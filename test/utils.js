@@ -1,5 +1,4 @@
 /* global assert */
-
 const assertRejects = async (q, msg) => {
   let res
   let catchFlag = false

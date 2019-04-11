@@ -2,7 +2,6 @@
 
 const { time } = require('openzeppelin-test-helpers')
 const { assertRejects } = require('./utils.js')
-const MathLib = artifacts.require('GnosisMath')
 const TokenOWL = artifacts.require('TokenOWL')
 const TokenOWLUpdateFixture = artifacts.require('TokenOWLUpdateFixture')
 const TokenOWLProxy = artifacts.require('TokenOWLProxy')
@@ -14,7 +13,6 @@ contract('TokenOWL - Proxy', accounts => {
   const [ master, notMaster, minter ] = accounts
 
   before(async () => {
-    await TokenOWLUpdateFixture.link(MathLib)
     const ProxyMasterContract = await TokenOWLProxy.deployed()
     tokenOWL = await TokenOWL.at(ProxyMasterContract.address)
     // a new deployed TokenOWL to replace the old with

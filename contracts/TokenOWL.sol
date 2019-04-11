@@ -76,6 +76,7 @@ contract TokenOWL is Proxied, GnosisStandardToken {
         balances[to] = balances[to].add(amount);
         totalTokens = totalTokens.add(amount);
         emit Minted(to, amount);
+        emit Transfer(address(0), to, amount);
     }
 
     /// @dev Burns OWL.
@@ -86,5 +87,6 @@ contract TokenOWL is Proxied, GnosisStandardToken {
         balances[user] = balances[user].sub(amount);
         totalTokens = totalTokens.sub(amount);
         emit Burnt(msg.sender, user, amount);
+        emit Transfer(user, address(0), amount);
     }
 }
