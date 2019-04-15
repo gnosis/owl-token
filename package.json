@@ -19,7 +19,8 @@
     "migrate": "truffle migrate",
     "lint": "eslint .",
     "change-owner": "truffle exec src/truffle/changeOwlCreator.js",
-    "prettier": "prettier --write --tab-width 4 --print-width 120 '**/*.sol'"
+    "prettier": "prettier --write --tab-width 4 --print-width 120 '**/*.sol'",
+    "verify": "npx verify-on-etherscan --network mainnet ./build/contracts/*"
   },
   "repository": {
     "type": "git",
@@ -33,7 +34,8 @@
   "homepage": "https://github.com/gnosis/owl-token#readme",
   "dependencies": {
     "@gnosis.pm/gno-token": "^2.0.0",
-    "@gnosis.pm/util-contracts": "^2.0.0"
+    "@gnosis.pm/util-contracts": "^2.0.0",
+    "verify-on-etherscan": "^1.1.1"
   },
   "devDependencies": {
     "dotenv": "^6.2.0",
