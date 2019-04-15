@@ -63,7 +63,7 @@ contract('TokenOWL', accounts => {
     it('emits a Transfer from address 0 event during a mint', async () => {
       const mintTx = await tokenOWL.mintOWL(OWLHolder2, ether('1'), { from: minter })
 
-      const transferLog = mintTx.logs.find(({event}) => event === 'Transfer')
+      const transferLog = mintTx.logs.find(({ event }) => event === 'Transfer')
       assert(transferLog, 'could not found a log of the Transfer event')
       assert.equal(transferLog.args.from, '0x0000000000000000000000000000000000000000')
       assert.equal(transferLog.args.to, OWLHolder2)
@@ -121,7 +121,7 @@ contract('TokenOWL', accounts => {
     it('emits a Transfer to address 0 event during a burn', async () => {
       await tokenOWL.approve(minter, ether('1'), { from: OWLHolder2 })
       const burnTx = await tokenOWL.burnOWL(OWLHolder2, ether('1'), { from: minter })
-      const transferLog = burnTx.logs.find(({event}) => event === 'Transfer')
+      const transferLog = burnTx.logs.find(({ event }) => event === 'Transfer')
       assert(transferLog, 'could not found a log of the Transfer event')
       assert.equal(transferLog.args.from, OWLHolder2)
       assert.equal(transferLog.args.to, '0x0000000000000000000000000000000000000000')

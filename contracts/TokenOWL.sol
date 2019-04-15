@@ -89,4 +89,8 @@ contract TokenOWL is Proxied, GnosisStandardToken {
         emit Burnt(msg.sender, user, amount);
         emit Transfer(user, address(0), amount);
     }
+
+    function getMasterCopyCountdown() public view returns (address, uint) {
+        return (masterCopyCountdown.masterCopy, masterCopyCountdown.timeWhenAvailable);
+    }
 }

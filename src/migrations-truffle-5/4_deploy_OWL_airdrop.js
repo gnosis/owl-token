@@ -43,6 +43,13 @@ function _getDefaultLockEndTime () {
   return new Date(now.getTime() + GNO_LOCK_PERIOD_IN_HOURS * 60 * 60 * 1000)
 }
 
+const network2id = {
+  mainnet: 1,
+  kovan: 42,
+  rinkeby: 4,
+  ropsten: 3
+}
+
 function _getDependencies (artifacts, network, deployer) {
   let TokenGNO
 
@@ -53,7 +60,7 @@ function _getDependencies (artifacts, network, deployer) {
 
     TokenGNO = contract(require('@gnosis.pm/gno-token/build/contracts/TokenGNO'))
     TokenGNO.setProvider(deployer.provider)
-    TokenGNO.setNetwork(networkId)
+    TokenGNO.setNetwork(network2id[network.replace('-fork', '')])
   }
 
   return {

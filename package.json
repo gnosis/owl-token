@@ -1,6 +1,6 @@
 {
   "name": "@gnosis.pm/owl-token",
-  "version": "3.0.0-rc.3",
+  "version": "3.0.3",
   "description": "The OWL token and related smart contracts",
   "main": "index.js",
   "scripts": {
@@ -19,7 +19,8 @@
     "migrate": "truffle migrate",
     "lint": "eslint .",
     "change-owner": "truffle exec src/truffle/changeOwlCreator.js",
-    "prettier": "prettier --write --tab-width 4 --print-width 120 '**/*.sol'"
+    "prettier": "prettier --write --tab-width 4 --print-width 120 '**/*.sol'",
+    "verify": "npx verify-on-etherscan --network mainnet ./build/contracts/*"
   },
   "repository": {
     "type": "git",
@@ -33,7 +34,8 @@
   "homepage": "https://github.com/gnosis/owl-token#readme",
   "dependencies": {
     "@gnosis.pm/gno-token": "^2.0.0",
-    "@gnosis.pm/util-contracts": "^2.0.0"
+    "@gnosis.pm/util-contracts": "^2.0.0",
+    "verify-on-etherscan": "^1.1.1"
   },
   "devDependencies": {
     "dotenv": "^6.2.0",
@@ -43,6 +45,7 @@
     "eslint-plugin-node": "^8.0.1",
     "eslint-plugin-promise": "^4.0.1",
     "eslint-plugin-standard": "^4.0.0",
+    "ganache-cli": "^6.4.1",
     "openzeppelin-test-helpers": "^0.1.2",
     "prettier": "^1.15.3",
     "prettier-plugin-solidity-refactor": "^1.0.0-alpha.12",

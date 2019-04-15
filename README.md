@@ -86,7 +86,9 @@ git checkout develop
 git merge vX.Y.X
 ```
 
-## Verify contract
+## Verify contract manually
+> NOTE: For mainnet is better to use the automatic verification script (see next section)
+
 Flatten the smart contract:
 ```bash
 npx truffle-flattener contracts/TokenOWL.sol > build/TokenOWL-EtherScan.sol
@@ -101,6 +103,15 @@ Go to Etherscan validation page:
   * Set the exact compiler version used for the compilation i.e. `v0.4.24+commit.e67f0147`
   * Optimization: `No`
 * Press validate
+
+## Verify contract automatically (mainnet only)
+You can use [verify-on-etherscan](https://www.npmjs.com/package/verify-on-etherscan)
+
+> NOTE: To use the verify You'll need to create an API Key in Etherscan for this step.
+
+```bash
+API_KEY=your-etherscan-api-key yarn verify
+```
 
 # Change the owner
 There's a script to change the OWL owner:
