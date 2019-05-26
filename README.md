@@ -3,20 +3,19 @@ The OWL token and related smart contracts.
 
 The token and contract can be in **Etherscan**:
 
-* **Mainnet**: 
-  * TokenOWL: [https://etherscan.io/token/0x694c68c7577a9a6a8cf2f6da0066790201afc260](https://etherscan.io/token/0x694c68c7577a9a6a8cf2f6da0066790201afc260)
-  * TokenOWLProxy: [https://etherscan.io/token/0x1a5f9352af8af974bfc03399e3767df6370d82e4](https://etherscan.io/token/0x1a5f9352af8af974bfc03399e3767df6370d82e4)
-  * OWLAirdrop: [https://etherscan.io/token/0x85e9fc8273b1ee9d81f4b800071563096f689863](https://etherscan.io/token/0x85e9fc8273b1ee9d81f4b800071563096f689863)
+* **Mainnet**:   
+  * TokenOWLProxy (address): [https://etherscan.io/token/0x1a5f9352af8af974bfc03399e3767df6370d82e4](https://etherscan.io/token/0x1a5f9352af8af974bfc03399e3767df6370d82e4)
+  * TokenOWL (master contract): [https://etherscan.io/token/0x60fbbd1fb0076971e8060631b5dd895f55ad5ab7](https://etherscan.io/address/0x60fbbd1fb0076971e8060631b5dd895f55ad5ab7)
 * **Rinkeby**:
-  * TokenOWL: [https://rinkeby.etherscan.io/token/0xff9874588b2358704832a380ca9892f0a1c57b40](https://rinkeby.etherscan.io/token/0xff9874588b2358704832a380ca9892f0a1c57b40)
-  * TokenOWLProxy: [https://rinkeby.etherscan.io/token/0xa7d1c04faf998f9161fc9f800a99a809b84cfc9d](https://rinkeby.etherscan.io/token/0xa7d1c04faf998f9161fc9f800a99a809b84cfc9d)
-  * OWLAirdrop: [https://rinkeby.etherscan.io/token/0x9b816eb9fa1af7bc57a4d7ce059ed072d49d7830](https://rinkeby.etherscan.io/token/0x9b816eb9fa1af7bc57a4d7ce059ed072d49d7830)
+  * TokenOWLProxy (address): [https://rinkeby.etherscan.io/token/0xa7d1c04faf998f9161fc9f800a99a809b84cfc9d](https://rinkeby.etherscan.io/token/0xa7d1c04faf998f9161fc9f800a99a809b84cfc9d)
+  * TokenOWL (master contract): [https://rinkeby.etherscan.io/token/0xff9874588b2358704832a380ca9892f0a1c57b40](https://rinkeby.etherscan.io/token/0xff9874588b2358704832a380ca9892f0a1c57b40)
 * **Kovan**:
+  * TokenOWLProxy (address): [https://kovan.etherscan.io/token/0xb6f77a34ff81dd13fa68b5774d74541a61047fe8](https://kovan.etherscan.io/token/0xb6f77a34ff81dd13fa68b5774d74541a61047fe8)
   * TokenOWL: [https://kovan.etherscan.io/token/0xa98fdb77b578f30d5d88b3ebc2600bfe67fa09d1](https://kovan.etherscan.io/token/0xa98fdb77b578f30d5d88b3ebc2600bfe67fa09d1)
-  * TokenOWLProxy: [https://kovan.etherscan.io/token/0xb6f77a34ff81dd13fa68b5774d74541a61047fe8](https://kovan.etherscan.io/token/0xb6f77a34ff81dd13fa68b5774d74541a61047fe8)
   * OWLAirdrop: [https://kovan.etherscan.io/token/0x45ce24c27f2442feb62f62bfb26ab161f07adc71](https://kovan.etherscan.io/token/0x45ce24c27f2442feb62f62bfb26ab161f07adc71)
 * **xDAI**:
-  * BridgedTokenOWL: [https://blockscout.com/poa/xdai/address/0x0905Ab807F8FD040255F0cF8fa14756c1D824931](https://blockscout.com/poa/xdai/address/0x0905Ab807F8FD040255F0cF8fa14756c1D824931)
+  * BridgedTokenOWL (address): [https://blockscout.com/poa/xdai/address/0x0905Ab807F8FD040255F0cF8fa14756c1D824931](https://blockscout.com/poa/xdai/address/0x0905Ab807F8FD040255F0cF8fa14756c1D824931)
+
 
 ## Setup and show the networks
 ```bash
