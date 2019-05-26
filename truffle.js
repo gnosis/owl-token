@@ -30,6 +30,7 @@ module.exports = truffleConfig({
   privateKey,
   gasPriceGWei,
   gas: GAS_LIMIT,
+  urlRinkeby: 'https://rinkeby.infura.io/v3/215a80d5964d4c618e61e8d8a0e3f2d5',
   aditionalNetwork,
   solcUseDocker,
   solcVersion
