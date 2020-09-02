@@ -6,7 +6,7 @@
   "scripts": {
     "rpc": "ganache-cli -d --mnemonic 'candy maple cake sugar pudding cream honey rich smooth crumble sweet treat' --defaultBalanceEther '500'",
     "preversion": "npm run restore",
-    "test": "LOCK_END_TIME='2019-06-12T16:00:00+02:00' OWL_PER_GNO=2 truffle test",
+    "test": "LOCK_END_TIME='2030-06-12T16:00:00+02:00' OWL_PER_GNO=2 truffle test",
     "truffle": "truffle",
     "networks-extract": "node src/extract_network_info.js",
     "networks-inject": "node src/inject_network_info.js",
