@@ -91,9 +91,9 @@ git merge vX.Y.X
 
 Flatten the smart contract:
 ```bash
-npx truffle-flattener contracts/TokenOWL.sol > build/TokenOWL-EtherScan.sol
-npx truffle-flattener contracts/TokenOWLProxy.sol > build/TokenOWLProxy-EtherScan.sol
-npx truffle-flattener contracts/OWLAirdrop.sol > build/OWLAirdrop-EtherScan.sol
+npx truffle-flattener contracts/5/TokenOWL.sol > build/TokenOWL-EtherScan.sol
+npx truffle-flattener contracts/5/TokenOWLProxy.sol > build/TokenOWLProxy-EtherScan.sol
+npx truffle-flattener contracts/5/OWLAirdrop.sol > build/OWLAirdrop-EtherScan.sol
 ```
 
 Go to Etherscan validation page:
