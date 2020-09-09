@@ -35,5 +35,5 @@ module.exports = {
     solcUseDocker,
     solcVersion
   }),
-  contracts_directory: "./contracts/5/",
+  contracts_directory: './contracts/5/'
 }

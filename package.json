@@ -13,9 +13,9 @@
     "networks-inject-dep": "node src/inject_network_info_deps.js",
     "networks-reset": "truffle networks --clean && npm run networks-inject",
     "networks": "truffle networks",
-    "compile-todo": "eslint --fix . && eslint . && truffle compile",
-    "compile": "truffle compile",
-    "restore": "truffle compile --all && npm run networks-reset",
+    "compile-todo": "eslint --fix . && eslint . && yarn compile",
+    "compile": "truffle compile -all && truffle compile --all --config truffle.4.js",
+    "restore": "yarn compile && npm run networks-reset",
     "migrate": "truffle migrate",
     "lint": "eslint .",
     "change-owner": "truffle exec src/truffle/changeOwlCreator.js",
@@ -35,7 +35,8 @@
   "dependencies": {
     "@gnosis.pm/gno-token": "^2.0.0",
     "@gnosis.pm/util-contracts": "^2.0.0",
-    "verify-on-etherscan": "^1.1.1"
+    "verify-on-etherscan": "^1.1.1",
+    "openzeppelin-solidity": "1.12.0"
   },
   "devDependencies": {
     "dotenv": "^6.2.0",
