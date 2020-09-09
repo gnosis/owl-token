@@ -4,7 +4,7 @@ import "../../vendor/tokenbridge-contracts/contracts/PermittableToken.sol";
 
 /// @dev A contract to implement OWL tokens on a bridged chain (e.g. XDai).
 /// Implements "burning" by allocating the amount to a dedicated receiver,
-/// which can transfor it to the native chain (e.g. Mainnet) and complete
+/// which can transfer it to the native chain (e.g. Mainnet) and complete
 /// the burn there.
 contract BridgedTokenOwl is PermittableToken {
     address public burnReceiver;

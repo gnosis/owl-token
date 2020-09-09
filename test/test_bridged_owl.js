@@ -4,7 +4,7 @@ const { assertRejects } = require('./utils')
 
 const BridgedTokenOWL = artifacts.require('BridgedTokenOWL')
 
-contract.only('BridgedTokenOWL', ([user1, user2, burnReceiver]) => {
+contract('BridgedTokenOWL', ([user1, user2, burnReceiver]) => {
   describe('burnOWL', () => {
     it('credits burned amount to burnReceiver', async () => {
       const token = await BridgedTokenOWL.new('xOWL', 'OWL', 18, 100, burnReceiver)
