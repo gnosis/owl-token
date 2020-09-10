@@ -4,7 +4,7 @@
       "links": {},
       "address": "0xE857a6d138C48CA7E2620d4AE1054156F8051B46",
       "transactionHash": "0x879ff9609e7cbc93f36328b204776bc3f9fa8c9955dbbae1a44745b1119ae19e"
-    },
+    }
   },
   "Migrations": {
     "1": {
@@ -21,7 +21,7 @@
       "links": {},
       "address": "0x8bdd53a53c53fbc40d38231d6219f8cb7b59a704",
       "transactionHash": "0x6c4ae0abb0355a44b88d90e13a3359cc7d28215afdd65928a898bca1d228d337"
-    },
+    }
   },
   "OWLAirdrop": {
     "1": {
@@ -38,7 +38,7 @@
       "links": {},
       "address": "0x45ce24c27f2442feb62f62bfb26ab161f07adc71",
       "transactionHash": "0x19446ad6810cb2c432ed45b0ffaee5cf51555a93fb27b1fe2870a597a90cda67"
-    },
+    }
   },
   "TokenOWL": {
     "1": {
