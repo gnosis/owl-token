@@ -6,7 +6,7 @@ import "../../vendor/tokenbridge-contracts/contracts/PermittableToken.sol";
 /// Implements "burning" by allocating the amount to a dedicated receiver,
 /// which can transfer it to the native chain (e.g. Mainnet) and complete
 /// the burn there.
-contract BridgedTokenOwl is PermittableToken {
+contract BridgedTokenOWL is PermittableToken {
     address public burnReceiver;
 
     event Burnt(address indexed from, address indexed user, uint256 amount);
