@@ -15,6 +15,8 @@ The token and contract can be in **Etherscan**:
   * TokenOWL: [https://kovan.etherscan.io/token/0xa98fdb77b578f30d5d88b3ebc2600bfe67fa09d1](https://kovan.etherscan.io/token/0xa98fdb77b578f30d5d88b3ebc2600bfe67fa09d1)
   * TokenOWLProxy: [https://kovan.etherscan.io/token/0xb6f77a34ff81dd13fa68b5774d74541a61047fe8](https://kovan.etherscan.io/token/0xb6f77a34ff81dd13fa68b5774d74541a61047fe8)
   * OWLAirdrop: [https://kovan.etherscan.io/token/0x45ce24c27f2442feb62f62bfb26ab161f07adc71](https://kovan.etherscan.io/token/0x45ce24c27f2442feb62f62bfb26ab161f07adc71)
+* **xDAI**:
+  * BridgedTokenOWL: [https://blockscout.com/poa/xdai/address/0x0905Ab807F8FD040255F0cF8fa14756c1D824931](https://blockscout.com/poa/xdai/address/0x0905Ab807F8FD040255F0cF8fa14756c1D824931)
 
 ## Setup and show the networks
 ```bash
@@ -112,6 +114,24 @@ You can use [verify-on-etherscan](https://www.npmjs.com/package/verify-on-ethers
 ```bash
 API_KEY=your-etherscan-api-key yarn verify
 ```
+
+## Verify contract on xDAI
+
+Flatten the smart contract:
+```bash
+npx truffle-flattener contracts/4/BridgedTokenOWL.sol > build/BridgedTokenOWL-BlockScout.sol
+```
+
+Go to Blockscout validation page:
+* Go to `https://blockscout.com/poa/xdai/address/<address>/contract_verifications/new`
+* Fill the information:
+  * Use `BridgedTokenOWL-BlockScout.sol`
+  * Compiler version: `v0.4.24+commit.e67f0147`
+  * EVM Version: `default`
+  * Optimization: `Yes`, Runs `200`
+  * Try to fetch contructor arguments automatically: `Yes`
+* Press validate
+
 
 # Change the owner
 There's a script to change the OWL owner:
