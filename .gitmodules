@@ -1,0 +1,3 @@
+[submodule "vendor/tokenbridge-contracts"]
+	path = vendor/tokenbridge-contracts
+	url = https://github.com/poanetwork/tokenbridge-contracts.git
