@@ -10,6 +10,8 @@ if [[ $TRAVIS_BRANCH = "master" || $TRAVIS_BRANCH = "develop" ]]; then
   echo " ==> COMPILING contracts"
   npm run compile;
 
+  ls build/contracts/
+
   # running contracts tests
   echo " ==> RUNNING test"
   npm test;
