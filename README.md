@@ -16,7 +16,7 @@ The token and contract can be in **Etherscan**:
   * TokenOWLProxy: [https://kovan.etherscan.io/token/0xb6f77a34ff81dd13fa68b5774d74541a61047fe8](https://kovan.etherscan.io/token/0xb6f77a34ff81dd13fa68b5774d74541a61047fe8)
   * OWLAirdrop: [https://kovan.etherscan.io/token/0x45ce24c27f2442feb62f62bfb26ab161f07adc71](https://kovan.etherscan.io/token/0x45ce24c27f2442feb62f62bfb26ab161f07adc71)
 * **xDAI**:
-  * BridgedTokenOWL: [https://blockscout.com/poa/xdai/address/0xE857a6d138C48CA7E2620d4AE1054156F8051B46](https://blockscout.com/poa/xdai/address/0xE857a6d138C48CA7E2620d4AE1054156F8051B46)
+  * BridgedTokenOWL: [https://blockscout.com/poa/xdai/address/0x0905Ab807F8FD040255F0cF8fa14756c1D824931](https://blockscout.com/poa/xdai/address/0x0905Ab807F8FD040255F0cF8fa14756c1D824931)
 
 ## Setup and show the networks
 ```bash
