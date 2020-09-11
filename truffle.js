@@ -25,12 +25,15 @@ const gasPriceGWei = process.env.GAS_PRICE_GWEI || DEFAULT_GAS_PRICE_GWEI
 //  i.e. NETWORK='{ "name": "docker", "networkId": "99999", "url": "http://rpc:8545", "gas": "6700000", "gasPrice": "25000000000"  }'
 let aditionalNetwork = process.env.NETWORK ? JSON.parse(process.env.NETWORK) : null
 
-module.exports = truffleConfig({
-  mnemonic,
-  privateKey,
-  gasPriceGWei,
-  gas: GAS_LIMIT,
-  aditionalNetwork,
-  solcUseDocker,
-  solcVersion
-})
+module.exports = {
+  ...truffleConfig({
+    mnemonic,
+    privateKey,
+    gasPriceGWei,
+    gas: GAS_LIMIT,
+    aditionalNetwork,
+    solcUseDocker,
+    solcVersion
+  }),
+  contracts_directory: "./contracts/5/",
+}
