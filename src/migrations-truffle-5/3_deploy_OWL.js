@@ -14,9 +14,8 @@ async function migrate ({ artifacts, deployer, network, accounts, web3 }) {
     `)
     return
   }
-
+  console.log('  - OWL master address: %s', TokenOWL.address)
   console.log('Deploy TokenOWLProxy')
-  console.log('  - owl master address: %s', TokenOWL.address)
   await deployer.deploy(TokenOWLProxy, TokenOWL.address)
 }
 
