@@ -4,6 +4,14 @@
       "links": {},
       "address": "0x0905Ab807F8FD040255F0cF8fa14756c1D824931",
       "transactionHash": "0x374c62b4eaf0c5d1c8b94a7d0c4564ecb077fe9b3ac50b08decea3b2e972ca43"
+    }
+  },
+  "Migrations": {
+    "1": {
+      "events": {},
+      "links": {},
+      "address": "0xB7797FdC3fC1fd45CBB091A3aDD7BD800D61BE03",
+      "transactionHash": "0x85325906aed3a568628911983ffd246da38194e98493d9d196e63f9752ca69a5"
     },
     "4": {
       "events": {},
